@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-family: "Syne";
+}
+body {
+  background-color: black;
+  font-family: "Manrope";
+  color: white;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  overflow: hidden;
+}
+/* Side Panel Style */
+.sidebar {
+  border: 1px solid white;
+  color: white;
+  height: 100vh;
+}
+.app-title {
+  margin: 25px;
+}
+.app-maintabs li {
+  list-style-type: none;
+  margin: 30px;
+}
+/* MainContent Style */
+.main-content {
+  border: 1px solid white;
+  color: white;
+}
+.content-title {
+  margin: 25px; /* Should mainain 25px margin horizontal */
+}
