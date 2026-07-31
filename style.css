@@ -109,14 +109,15 @@ nav.navigation {
 }
 .expenses-categories{
   display: flex;
-  gap: 100px;
+  gap: 50px;
 }
 
-.categories-container{
-display: flex;
-flex: 600px 1;
-flex-wrap: wrap;
-gap: 30px;
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-right: 30px;
 }
 .card {
   background: linear-gradient(
@@ -126,11 +127,18 @@ gap: 30px;
 );
 }
 .pie-chart-card{
-  height: 585px;
-  width: 600px;
+  height: 455px;
+  width: 470px;
   border-radius: 25px;
+  flex-shrink: 0;
 }
 .minicard{
-  height: 200px;
-  width: 400px;
+  display: flex;
+  flex-shrink: 1;
+  height: 150px;
+  width: auto;
+  border-radius: 20px;
+}
+.electricity-expense{
+  
 }
