@@ -22,6 +22,7 @@ body {
 .app-title {
   margin: 30px;
 }
+
 .app-maintabs li {
   list-style-type: none;
   padding: 20px;
@@ -37,8 +38,9 @@ body {
   font-family: "Syne";
 }
 .selected {
-  border: 1px solid #2a2a28;
+  border: 1px solid black;
   border-radius: 20px;
+  background-color: #04342c;
 }
 /* -------MainContent Style------- */
 .main-content {
