@@ -37,11 +37,15 @@ body {
   gap: 10px;
   font-family: "Syne";
 }
+.selected svg {
+  color: #5dcaa5;
+}
 .selected {
   border: 1px solid black;
   border-radius: 20px;
   background-color: #04342c;
 }
+
 /* -------MainContent Style------- */
 .main-content {
   /* border: 1px solid white; */
@@ -52,27 +56,3 @@ body {
 }
 
 /* ------Dashboard Style------ */
-.total-expense {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  gap: 30px;
-  margin: 30px;
-}
-
-.thismonth-card,
-.nextmonth-card {
-  padding: 30px;
-  border: 1px solid #2a2a28;
-  width: 250px;
-  height: 70px;
-  background-color: #151513;
-  border-radius: 20px;
-}
-
-.thismonth-text,
-.thismonth-value,
-.nextmonth-text,
-.nextmonth-value {
-  margin: 5px;
-}
