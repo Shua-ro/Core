@@ -53,6 +53,9 @@ nav {
   border-radius: 20px;
   background-color: #04342c;
 }
+.selected h2{
+  color:#5dcaa5;
+}
 
 /* -------MainContent Style------- */
 .main-content {
