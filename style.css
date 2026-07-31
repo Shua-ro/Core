@@ -80,3 +80,18 @@ nav.navigation {
   border-bottom: 1px solid #2a2a28;
 }
 /* ------Dashboard Style------ */
+.expenses {
+  display: flex;
+  justify-content:left ;
+  margin: 30px;
+  gap: 60px;
+}
+.expense-value {
+  font-size: 64px;
+  font-weight: bold;
+}
+.expenses p {
+  font-size: 18.7px;
+  color: #6e6e69;
+  font-weight: bold;
+}
