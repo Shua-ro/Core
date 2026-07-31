@@ -18,6 +18,14 @@ nav {
   align-items: center;
   height: 100px;
 }
+.time-zone {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
 /* -------Side Panel Style------- */
 .sidebar {
   /*  border: 1px solid white; */
