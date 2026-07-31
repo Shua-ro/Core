@@ -16,7 +16,7 @@ body {
 /* -------Side Panel Style------- */
 .sidebar {
   /*  border: 1px solid white; */
-  color: EDECE6;
+  color: #edece6;
   height: 100vh;
 }
 .app-title {
@@ -37,15 +37,40 @@ body {
   font-family: "Syne";
 }
 .selected {
-  /* Temporary only */
-  border: 1px solid white;
+  border: 1px solid #2a2a28;
   border-radius: 20px;
 }
 /* -------MainContent Style------- */
 .main-content {
   /* border: 1px solid white; */
-  color: EDECE6;
+  color: #edece6;
 }
 .content-title {
   margin: 30px; /* Should maintain 30px margin horizontal */
+}
+
+/* ------Dashboard Style------ */
+.total-expense {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 30px;
+  margin: 30px;
+}
+
+.thismonth-card,
+.nextmonth-card {
+  padding: 30px;
+  border: 1px solid #2a2a28;
+  width: 250px;
+  height: 70px;
+  background-color: #151513;
+  border-radius: 20px;
+}
+
+.thismonth-text,
+.thismonth-value,
+.nextmonth-text,
+.nextmonth-value {
+  margin: 5px;
 }
