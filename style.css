@@ -21,6 +21,9 @@ nav {
 /* -------Side Panel Style------- */
 .sidebar {
   /*  border: 1px solid white; */
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   color: #edece6;
   height: 100vh;
 }
