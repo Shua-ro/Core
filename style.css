@@ -127,10 +127,19 @@ nav.navigation {
 );
 }
 .pie-chart-card{
-  height: 455px;
+  height: 470px;
   width: 470px;
   border-radius: 25px;
   flex-shrink: 0;
+}
+.chart-container{
+  height: 470px;
+  padding: 30px;
+}
+#myChart{
+  border: none;
+  height: 130px;
+  position: relative;
 }
 .minicard{
   display: flex;
