@@ -39,7 +39,8 @@ body {
 nav {
   display: flex;
   align-items: center;
-  height: 100px;
+  min-height: 100px;
+
 }
 .time-zone {
   display: flex;
@@ -199,7 +200,8 @@ nav.navigation {
 .settings-box {
   display: flex;
   flex-direction: column;
-  height: 1000px; /* Requires a defined height to push content */
+  
+  margin-top: auto;
 }
 /* .settings-option h1 {
   margin: 0;
@@ -271,4 +273,46 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .note input{
   width: 300px;
+}
+.button{
+  width: 110px;
+  height: 45px;
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+  align-self: flex-end;
+}
+
+/* RECENT ENTRIES */
+.recent-entries{
+  border: 1px solid var(--muted);
+  border-radius: 20px;
+  padding: 15px;
+  margin-top: 10px;
+  
+}
+.entries{
+  width:1000px ;
+  margin-left: 30px;
+}
+.table-head{
+  display: flex;
+  width: 100%;
+  border: 1px solid var(--muted);
+  
+  border-radius: 20px;
+  padding: 7px;
+  margin-top: 10px;
+}
+.heads{
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+.bulk-button{
+  display: flex;
+  margin-left: auto;
+
 }
