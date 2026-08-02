@@ -197,11 +197,62 @@ height: 135px;
 border-radius: 25px;
 }
 .subp{
-  margin-left: 20px;
+  margin-left: 30px;
   margin-top: 20px;
   color: var(--muted);
 }
 .electricity-expense-value{
   font-size: 48px;
-  margin-left: 20px;
+  margin-left: 30px;
+}
+.change-rate {
+  width: 300px;
+  height: 135px;
+  border-radius: 25px;
+}
+.percentage{
+  font-size: 48px;
+  margin-left: 30px;
+}
+.add-expense{
+  margin-left: 30px;
+  width: 1000px;
+  height: 175px;
+  border-radius: 25px;
+  padding-top: 20px;
+}
+.add-expense h3{
+  margin-left: 30px;
+  
+}
+.inputs input{
+  background-color: transparent;
+  border: 2px solid var(--border);
+  margin-left: 30px;
+  margin-top: 10px;
+  height: 45px;
+  width: 150px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  color: white;
+}
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: var(--muted);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.inputs{
+  display: flex;
+  gap: 40px;
+}
+.note input{
+  width: 300px;
 }
