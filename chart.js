@@ -1,6 +1,7 @@
+/* ------PIE CHART------ */
 const colors = ["Electricity", "Groceries", "Pigery", "Allowance", "Loans"];
 const data_array = [230, 250, 2300, 1500, 1000];
-const categoryColors = ["#F5C242", "#3ECF8E", "#F2784B", "#4C8BF5", "#E5566B"];
+const categoryColors = ["#199e70", "#3987e5", "#d62b22", "#d55181", "#c98500"];
 const myChart = new Chart("myChart", {
   type: "pie",
   data: {
