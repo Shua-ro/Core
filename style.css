@@ -187,3 +187,21 @@ nav.navigation {
   margin-left: 20px ;
   color:var(--muted)
 }
+/* CSS HERE */
+
+
+/* Electricity TAB */
+.total-this-month{
+width: 300px;
+height: 135px;
+border-radius: 25px;
+}
+.subp{
+  margin-left: 20px;
+  margin-top: 20px;
+  color: var(--muted);
+}
+.electricity-expense-value{
+  font-size: 48px;
+  margin-left: 20px;
+}
