@@ -298,7 +298,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .table-head{
   display: flex;
   width: 100%;
-  border: 1px solid var(--muted);
+  border-top: 1px solid var(--muted);
+  border-left: 1px solid var(--muted);
+  border-right: 1px solid var(--muted);
   
   border-radius: 20px;
   padding: 7px;
@@ -315,4 +317,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   margin-left: auto;
 
+}
+.table-values{
+  border: 1px solid var(--muted);
+}
+
+.entry-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  align-items: center;
 }
