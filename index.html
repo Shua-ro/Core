@@ -13,7 +13,6 @@
     <link href="src/index.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Core</title>
-  
   </head>
 
   <body>
@@ -241,7 +240,7 @@
                 </svg>
                 <h1 class="expense-title">Electricity</h1>
               </div>
-              <h2 class="category-value electricity-value">₱10000</h2>
+              <h2 class="category-value electricity-value">₱</h2>
               <p class="electricty-status category-subp">Paid this month</p>
             </div>
             <div class="groceries-expense card minicard">
@@ -361,36 +360,50 @@
         <h1 class="content-title">Electricity</h1>
         <div class="expenses">
           <div class="total-this-month card totals">
-            <p class="subp">Total this month</p>
-            <h2 class="electricity-expense-value">₱10000</h2>
+            <p class="subp total">Total this month</p>
+            <h2 class="electricity-expense-value"></h2>
           </div>
           <div class="change-rate card">
-            <p class="subp">Change</p>
+            <p class="subp total">Change</p>
             <div class="rate-container">
-              <h2 class="percentage">0%</h2>
+              <h2 class="percentage electricity-percentage"></h2>
             </div>
           </div>
         </div>
         <div class="add-expense card">
           <h3>Add expense</h3>
-          <form class="inputs">
+          <form id="elec-form" class="inputs">
             <div class="amount">
               <p class="subp">Amount</p>
-              <input class="Enters" type="number" placeholder="0.0" />
+              <input
+                id="electricity-amount"
+                class="Enters"
+                type="number"
+                placeholder="0.0"
+                required
+              />
             </div>
             <div class="date">
-              <p class="subp">Amount</p>
-              <input class="Enters" type="date" placeholder="0.0" />
+              <p class="subp">Date</p>
+              <input
+                id="electricity-date"
+                class="Enters"
+                type="date"
+                placeholder="0.0"
+                required
+              />
             </div>
             <div class="note">
               <p class="subp">Note</p>
               <input
+                id="electricity-note"
                 class="Enters-note"
                 type="text"
                 placeholder="Meter reading, late fee etc."
+                maxlength="10"
               />
             </div>
-            <button type="submit" class="button save">Save</button>
+            <button type="submit" class="button electricity-save">Save</button>
           </form>
         </div>
 
@@ -410,15 +423,13 @@
                 <button class="button bulkdel">Bulk delete</button>
               </div>
             </div>
-            <div class="row">
-              <div class="row-value">
-                <p class="valuedate">Aug 12</p>
-                <p class="valueamount">100</p>
-                <p class="valuenote">----</p>
-              </div>
-              <div class="action-buttons">
-                <button class="button bulkdel">Edit</button>
-                <button class="button bulkdel">Delete</button>
+            <div class="row" id="elec-row"></div>
+            <div class="pagination">
+              <p id="elec-pagination-info">Showing 1-5 of 0</p>
+              <div class="page-controls">
+                <button id="elec-prev" class="page-arrow">‹</button>
+                <div id="elec-page-numbers" class="page-numbers"></div>
+                <button id="elec-next" class="page-arrow">›</button>
               </div>
             </div>
           </div>
@@ -431,7 +442,7 @@
 
         <div class="expenses">
           <div class="total-this-month card totals">
-            <p class="subp">Total this month</p>
+            <p class="subp total">Total this month</p>
             <h2 class="electricity-expense-value">₱10000</h2>
           </div>
         </div>
@@ -443,7 +454,7 @@
               <input class="Enters" type="number" placeholder="0.0" />
             </div>
             <div class="date">
-              <p class="subp">Amount</p>
+              <p class="subp">Date</p>
               <input class="Enters" type="date" placeholder="0.0" />
             </div>
             <div class="note">
@@ -454,7 +465,7 @@
                 placeholder="Fresh Milk, Eggs, Party etc."
               />
             </div>
-            <button type="submit" class="button save">Save</button>
+            <button type="submit" class="button groceries-save">Save</button>
           </form>
         </div>
 
@@ -490,7 +501,7 @@
 
       <section class="view" data-view="pigery">
         <h1 class="content-title">Pigery</h1>
-        <p class="subp">Coming soon.</p>
+        <p class="subp total">Coming soon.</p>
       </section>
 
       <!-- ALLOWANCE VIEW  -->
@@ -498,7 +509,7 @@
         <h1 class="content-title">Allowance</h1>
         <div class="expenses">
           <div class="total-this-month card totals">
-            <p class="subp">Total this month</p>
+            <p class="subp total">Total this month</p>
             <h2 class="allowance-expense-value">₱10000</h2>
           </div>
         </div>
@@ -586,12 +597,12 @@
 
       <section class="view" data-view="loans">
         <h1 class="content-title">Loans</h1>
-        <p class="subp">Coming soon.</p>
+        <p class="subp total">Coming soon.</p>
       </section>
 
       <section class="view" data-view="settings">
         <h1 class="content-title">Settings</h1>
-        <p class="subp">Coming soon.</p>
+        <p class="subp total">Coming soon.</p>
       </section>
     </div>
   </body>
