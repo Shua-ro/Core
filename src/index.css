@@ -138,7 +138,7 @@ nav.navigation {
   display: flex;
   justify-content: left;
   margin: 20px;
-  gap: 60px;
+  gap: 20px;
 }
 .expense-value {
   font-size: 64px;
@@ -261,9 +261,21 @@ nav.navigation {
 }
 .percentage {
   font-size: 48px;
+}
+.percentage-svg {
+  
   margin-left: 30px;
 }
+.downtrend{
+  color:#FF4545;
+  transform: scaleY(-1);
+}
 
+.rate-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .add-expense {
   margin-left: 20px;
   padding: 20px 30px;
@@ -275,7 +287,6 @@ nav.navigation {
 }
 
 .inputs input {
-  
   background-color: transparent;
   border: 2px solid var(--border);
   margin-top: 10px;
@@ -311,8 +322,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .note input {
   max-width: 300px;
 }
-.amount, .note, .date{
-  flex:1;
+.amount,
+.note,
+.date {
+  flex: 1;
 }
 .button {
   width: 110px;
@@ -325,7 +338,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .groceries-save,
 .electricity-save {
   margin-left: auto;
-  
 }
 /* RECENT ENTRIES */
 .recent-entries {
@@ -360,9 +372,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   flex-direction: column;
   gap: 5px;
   width: 100%;
-  
+
   /* padding: 10px; */
-  
 }
 .rowContainer {
   display: flex;
@@ -390,7 +401,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: flex;
   margin-left: auto;
 }
-.bulkdel, .del, .edit {
+.bulkdel,
+.del,
+.edit {
   height: 35px;
   width: 90px;
 }
@@ -434,7 +447,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: transparent;
   color: var(--muted);
   border: 1px solid var(--border);
-  
 }
 .buttons-allowance {
   display: flex;
@@ -477,7 +489,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     align-self: left;
   }
 }
-@media screen and (max-width: 1586px) {
+@media screen and (max-width: 30px) {
   .expense-category {
     margin-top: 20px;
   }
@@ -501,7 +513,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .percentage {
   font-size: 48px;
-  margin-left: 30px;
 }
 .add-expense {
   margin-left: 20px;
@@ -513,7 +524,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 25px;
   padding-top: 20px;
 }
-
 
 input[type="date"]::-webkit-datetime-edit-text,
 input[type="date"]::-webkit-datetime-edit-month-field,
@@ -589,4 +599,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0.3;
   cursor: not-allowed;
 }
+.negative {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 0, 0, 0.137) 0%,
+    rgba(80, 1, 1, 0.06) 100%
+  );
+}
+.positive {
+  background: linear-gradient(
+    180deg,
+    rgba(9, 255, 0, 0.137) 0%,
+    rgba(17, 80, 1, 0.06) 100%
+  );
+}
+.negative-text{
+  color: #FF4545 !important;
+}
+.positive-text{
+  color: #16a34a !important;
+}
+
+
 /* ALLOWANCE CSS */

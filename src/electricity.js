@@ -1,3 +1,4 @@
+const elecPaginationInfo = document.getElementById('elec-pagination-info');
 /* SAVE BUTTON LOGIC */
 const electricityButton = document.querySelector(".electricity-save");
 const electricityForm = document.getElementById("elec-form");
@@ -10,7 +11,7 @@ electricityForm.addEventListener("submit", async (e) => {
     note: document.getElementById("electricity-note").value.trim(),
   };
   await window.electronAPI.addElectricity(result);
-  loadElectricityData(page);
+  loadElectricityData(electricityPage);
   electricityForm.reset();
 });
 
@@ -120,14 +121,17 @@ function change(entries) {
   if (entries.length < 2) {
     return "0%";
   }
-  const x1 = entries[entries.length - 2].amount;
-  const x2 = entries[entries.length - 1].amount;
+  const x1 = entries[1].amount;
+  const x2 = entries[0].amount;
   const rate = ((x1 - x2) / x1) * 100;
+  const difference = x2 - x1;
+  changeRateColor(difference);
+
+  
   return Math.abs(rate).toFixed(0) + "%";
 }
-
 function pageValues(entries, page) {
-  const pageSize = 5;
+  const pageSize = 3;
   const totalPages = Math.ceil(entries.length / pageSize);
 
   const currentPage = page;
@@ -137,30 +141,64 @@ function pageValues(entries, page) {
   return pageEntries;
 }
 function paginationControls(page, entries) {
-  const pageSize = 5;
+  const pageSize = 3;
   const totalPages = Math.ceil(entries.length / pageSize);
+  
   if (page <= 1) {
     elecPrev.disabled = true;
   } else {
     elecPrev.disabled = false;
   }
-
   if (page >= totalPages) {
-    elecNext.disabled = true;
-  } else {
-    elecNext.disabled = false;
-  }
+      elecNext.disabled = true;
+    } else {
+        elecNext.disabled = false;
+    }
+    elecPaginationInfo.innerText = 'Showing page '+ page+' of ' + totalPages;
+}
+function changeRateColor(rate){
+    const changeRate = document.querySelector('.change-rate');
+    const trendIcon = document.querySelector('.percentage-svg');
+    const electricityPercentage = document.querySelector('.electricity-percentage');
+    const changeTitle = document.querySelector('.elec-change');
+    changeRate.classList.remove("positive");
+    changeRate.classList.remove("negative");
+    electricityPercentage.classList.remove("positive-text");
+    changeTitle.classList.remove("positive-text");
+    trendIcon.classList.remove("downtrend");
+    if(rate>0){
+        changeRate.classList.remove("positive");
+        changeRate.classList.toggle("negative");
+        trendIcon.classList.add("downtrend");
+        trendIcon.style.color = "#FF4545;";
+        electricityPercentage.classList.add("negative-text");
+        electricityPercentage.classList.remove("positive-text");
+        changeTitle.classList.add("negative-text");
+        changeTitle.classList.remove("positive-text");
+    }
+    else if(rate<0){
+        changeRate.classList.toggle("positive");
+        changeRate.classList.remove("negative");
+        trendIcon.classList.remove("downtrend");
+        trendIcon.style.color = "#16a34a";
+        electricityPercentage.classList.remove("negative-text");
+        electricityPercentage.classList.add("positive-text");
+        changeTitle.classList.remove("negative-text");
+        changeTitle.classList.add("positive-text");
+    } else{
+        trendIcon.style.color = "";
+    }
 }
 
 const elecPrev = document.getElementById("elec-prev");
 const elecNext = document.getElementById("elec-next");
-let page = 1;
+let electricityPage = 1;
 
 elecPrev.addEventListener("click", () => {
-  page--;
-  loadElectricityData(page);
+  electricityPage--;
+  loadElectricityData(electricityPage);
 });
 elecNext.addEventListener("click", () => {
-  page++;
-  loadElectricityData(page);
+  electricityPage++;
+  loadElectricityData(electricityPage);
 });

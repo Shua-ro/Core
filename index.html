@@ -363,10 +363,25 @@
             <p class="subp total">Total this month</p>
             <h2 class="electricity-expense-value"></h2>
           </div>
-          <div class="change-rate card">
-            <p class="subp total">Change</p>
+          <div class="change-rate card positive">
+            <p class="subp total elec-change positive-text">Change</p>
             <div class="rate-container">
-              <h2 class="percentage electricity-percentage"></h2>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                class="percentage-svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="3 7 9 13 13 9 21 17"></polyline>
+                <polyline points="14 17 21 17 21 10"></polyline>
+              </svg>
+              <h2 class="percentage electricity-percentage positive-text"></h2>
             </div>
           </div>
         </div>
@@ -425,7 +440,7 @@
             </div>
             <div class="row" id="elec-row"></div>
             <div class="pagination">
-              <p id="elec-pagination-info">Showing 1-5 of 0</p>
+              <p id="elec-pagination-info"></p>
               <div class="page-controls">
                 <button id="elec-prev" class="page-arrow">‹</button>
                 <div id="elec-page-numbers" class="page-numbers"></div>
