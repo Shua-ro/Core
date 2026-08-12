@@ -4,5 +4,6 @@ import { contextBridge, ipcRenderer } from "electron";
 
 contextBridge.exposeInMainWorld("electronAPI", {
   addElectricity: (data) => ipcRenderer.invoke("addElectricity", data),
-  getElectricity: () => ipcRenderer.invoke("getElectricity")
+  getElectricity: () => ipcRenderer.invoke("getElectricity"),
+  deleteElectricity: (id) => ipcRenderer.invoke("deleteElectricity", id)
 });

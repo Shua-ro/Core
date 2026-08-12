@@ -37,3 +37,5 @@ function getElectricity() {
     return stmt.all();
 }
 export { db, getElectricity};
+
+

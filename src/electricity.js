@@ -1,4 +1,4 @@
-const elecPaginationInfo = document.getElementById('elec-pagination-info');
+const elecPaginationInfo = document.getElementById("elec-pagination-info");
 /* SAVE BUTTON LOGIC */
 const electricityButton = document.querySelector(".electricity-save");
 const electricityForm = document.getElementById("elec-form");
@@ -49,7 +49,8 @@ function entryAppending(entries, page) {
     flexContainerRow.appendChild(row);
 
     /* Button */
-    const buttons = createElectricalActionButtons();
+    const buttons = createElectricalActionButtons(rows, page);
+
     flexContainerRow.appendChild(buttons);
 
     rowContainer.appendChild(flexContainerRow);
@@ -94,17 +95,23 @@ function createElectricalRows(data) {
   row.appendChild(col3);
   return row;
 }
-function createElectricalActionButtons() {
+function createElectricalActionButtons(rows, page) {
   const col1 = document.createElement("button");
   const col2 = document.createElement("button");
 
   col1.classList.add("button", "edit");
-  col2.classList.add("button", "del");
-
+  col2.classList.add("button", "del", "elec-del");
+  col2.dataset.id = rows.id;
   col1.innerText = "Edit";
   col2.innerText = "Delete";
   const row = document.createElement("div");
   row.classList.add("action-buttons");
+
+  col2.addEventListener("click", async () => {
+    const buttonId = col2.dataset.id;
+    await window.electronAPI.deleteElectricity(Number(buttonId));
+    loadElectricityData(page);
+  });
 
   row.appendChild(col1);
   row.appendChild(col2);
@@ -127,7 +134,6 @@ function change(entries) {
   const difference = x2 - x1;
   changeRateColor(difference);
 
-  
   return Math.abs(rate).toFixed(0) + "%";
 }
 function pageValues(entries, page) {
@@ -143,51 +149,49 @@ function pageValues(entries, page) {
 function paginationControls(page, entries) {
   const pageSize = 3;
   const totalPages = Math.ceil(entries.length / pageSize);
-  
+
   if (page <= 1) {
     elecPrev.disabled = true;
   } else {
     elecPrev.disabled = false;
   }
   if (page >= totalPages) {
-      elecNext.disabled = true;
-    } else {
-        elecNext.disabled = false;
-    }
-    elecPaginationInfo.innerText = 'Showing page '+ page+' of ' + totalPages;
+    elecNext.disabled = true;
+  } else {
+    elecNext.disabled = false;
+  }
+  elecPaginationInfo.innerText = "Showing page " + page + " of " + totalPages;
 }
-function changeRateColor(rate){
-    const changeRate = document.querySelector('.change-rate');
-    const trendIcon = document.querySelector('.percentage-svg');
-    const electricityPercentage = document.querySelector('.electricity-percentage');
-    const changeTitle = document.querySelector('.elec-change');
-    changeRate.classList.remove("positive");
-    changeRate.classList.remove("negative");
-    electricityPercentage.classList.remove("positive-text");
-    changeTitle.classList.remove("positive-text");
-    trendIcon.classList.remove("downtrend");
-    if(rate>0){
-        changeRate.classList.remove("positive");
-        changeRate.classList.toggle("negative");
-        trendIcon.classList.add("downtrend");
-        trendIcon.style.color = "#FF4545;";
-        electricityPercentage.classList.add("negative-text");
-        electricityPercentage.classList.remove("positive-text");
-        changeTitle.classList.add("negative-text");
-        changeTitle.classList.remove("positive-text");
-    }
-    else if(rate<0){
-        changeRate.classList.toggle("positive");
-        changeRate.classList.remove("negative");
-        trendIcon.classList.remove("downtrend");
-        trendIcon.style.color = "#16a34a";
-        electricityPercentage.classList.remove("negative-text");
-        electricityPercentage.classList.add("positive-text");
-        changeTitle.classList.remove("negative-text");
-        changeTitle.classList.add("positive-text");
-    } else{
-        trendIcon.style.color = "";
-    }
+function changeRateColor(rate) {
+  const changeRate = document.querySelector(".change-rate");
+  const trendIcon = document.querySelector(".percentage-svg");
+  const electricityPercentage = document.querySelector(".electricity-percentage");
+  const changeTitle = document.querySelector(".elec-change");
+
+  // reset everything first
+  changeRate.classList.remove("positive", "negative");
+  electricityPercentage.classList.remove("positive-text", "negative-text");
+  changeTitle.classList.remove("positive-text", "negative-text");
+  trendIcon.classList.remove("downtrend");
+  trendIcon.style.color = "";
+  electricityPercentage.style.color = "";
+  changeTitle.style.color = "";
+
+  if (rate > 0) {
+    // increase = bad (spending went up) = red
+    changeRate.classList.add("negative");
+    electricityPercentage.classList.add("negative-text");
+    changeTitle.classList.add("negative-text");
+    trendIcon.classList.add("downtrend");
+    trendIcon.style.color = "#FF4545";
+  } else if (rate < 0) {
+    // decrease = good (spending went down) = green
+    changeRate.classList.add("positive");
+    electricityPercentage.classList.add("positive-text");
+    changeTitle.classList.add("positive-text");
+    trendIcon.style.color = "#16a34a";
+  }
+  // rate === 0: everything already reset above, nothing more to do
 }
 
 const elecPrev = document.getElementById("elec-prev");
@@ -202,3 +206,8 @@ elecNext.addEventListener("click", () => {
   electricityPage++;
   loadElectricityData(electricityPage);
 });
+
+async function singleDeletions(id) {
+  await window.electronAPI.deleteElectricity(id);
+  console.log("delete successfull");
+}

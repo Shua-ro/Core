@@ -94,6 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
   navInit();
   viewName("dashboard");
   renderChart();
-  loadElectricityData(electricityPage);/* Refer to electricity.js */
+  loadElectricityData(electricityPage); /* Refer to electricity.js */
 });
 
