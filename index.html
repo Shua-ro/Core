@@ -139,8 +139,8 @@
             <h2>Allowance</h2>
           </div>
         </li>
-        <li data-target="loans">
-          <div class="Loans list">
+        <li data-target="savings">
+          <div class="Savings list">
             <svg
               viewBox="0 0 24 24"
               width="20"
@@ -159,7 +159,7 @@
               <path d="M9 13l6 0" />
               <path d="M13 17l2 0" />
             </svg>
-            <h2>Loans</h2>
+            <h2>Savings</h2>
           </div>
         </li>
       </ul>
@@ -324,7 +324,7 @@
                 Last given 10 days ago
               </p>
             </div>
-            <div class="loans-expense card minicard">
+            <div class="savings-expense card minicard">
               <div class="expense-category">
                 <svg
                   viewBox="0 0 24 24"
@@ -344,10 +344,10 @@
                   <path d="M9 13l6 0" />
                   <path d="M13 17l2 0" />
                 </svg>
-                <h1 class="expense-title">Loans</h1>
+                <h1 class="expense-title">Savings</h1>
               </div>
-              <h2 class="category-value loans-value">₱10000</h2>
-              <p class="next-payment-loans category-subp">
+              <h2 class="category-value savings-value">₱10000</h2>
+              <p class="next-payment-savings category-subp">
                 Next Payment Aug 10
               </p>
             </div>
@@ -610,9 +610,100 @@
         </div>
       </section>
 
-      <section class="view" data-view="loans">
-        <h1 class="content-title">Loans</h1>
-        <p class="subp total">Coming soon.</p>
+      <section class="view" data-view="savings">
+        <h1 class="content-title">Savings</h1>
+
+        <div class="expenses">
+          <div class="total-this-month card">
+            <p class="subp">Total Savings</p>
+            <h2 class="savings-total-value">₱0</h2>
+          </div>
+
+          <div class="new-category-card card">
+            <p class="subp">New category</p>
+            <div class="new-category-inputs">
+              <input
+                id="savings-category-name"
+                class="Enters"
+                type="text"
+                placeholder="e.g. Emergency Fund"
+              />
+              <button type="button" class="button savings-add-category">
+                Create
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="categories-container savings-categories"
+          id="savings-categories"
+        >
+          <!-- category cards get rendered here in JS -->
+        </div>
+
+        <div class="add-expense card">
+          <h3>Add to savings</h3>
+          <form class="inputs" id="savings-form">
+            <div class="whom">
+              <p class="subp">Category</p>
+              <select id="savings-category-select" required>
+                <option value="" disabled selected>Choose category</option>
+              </select>
+            </div>
+            <div class="amount">
+              <p class="subp">Amount</p>
+              <input
+                id="savings-amount"
+                class="Enters"
+                type="number"
+                placeholder="0.0"
+              />
+            </div>
+            <div class="date">
+              <p class="subp">Date</p>
+              <input id="savings-date" class="Enters" type="date" />
+            </div>
+            <div class="note">
+              <p class="subp">Note</p>
+              <input
+                id="savings-note"
+                class="Enters-note"
+                type="text"
+                placeholder="Bonus, birthday money, etc."
+              />
+            </div>
+            <button type="submit" class="button savings-save">Save</button>
+          </form>
+        </div>
+
+        <div class="entries">
+          <div class="recent-entries">
+            <h2>Recent entries</h2>
+          </div>
+          <div class="table">
+            <div class="table-head">
+              <div class="heads savings-heads">
+                <h4 class="date">Date</h4>
+                <h4 class="category">Category</h4>
+                <h4 class="amount">Amount</h4>
+                <h4 class="note">Note</h4>
+              </div>
+              <div class="bulk-button">
+                <button class="button bulkdel">Bulk delete</button>
+              </div>
+            </div>
+            <div class="row" id="savings-row"></div>
+          </div>
+          <div class="pagination">
+            <p id="savings-pagination-info">Showing 0 of 0</p>
+            <div class="page-controls">
+              <button id="savings-prev" class="page-arrow">‹</button>
+              <div id="savings-page-numbers" class="page-numbers"></div>
+              <button id="savings-next" class="page-arrow">›</button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="view" data-view="settings">
