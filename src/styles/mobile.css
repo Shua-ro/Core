@@ -1,0 +1,142 @@
+body {
+  grid-template-columns: auto;
+  grid-template-rows: auto 1fr auto;
+}
+.main-content {
+  grid-row: 2;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/*=============================================================
+    NAVIGATION BAR
+  ===========================================================  
+ */
+.sidebar,
+nav.navigation {
+  display: none;
+}
+.mobile-nav {
+  display: block;
+}
+.app-title {
+  margin: 0;
+  margin-left: 10px;
+}
+.logo-settings {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.nav-settings {
+  height: 25px;
+  width: 25px;
+}
+.mobile-settings {
+  height: 45px;
+  width: 45px;
+  margin-left: auto;
+  margin-right: 10px;
+  /* border: 1px solid var(--border);
+  background-color: var(--raisedcard); */
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.time-zone {
+  margin-bottom: 30px;
+  gap: 10px;
+}
+
+.time-zone li {
+padding: 5px 15px;
+  /* border: 1px solid var(--border);
+  background-color: var(--raisedcard); */
+  border-radius: 20px;
+  margin: none;
+}
+.time-selected {
+  background-color: #04342c !important;
+  color: #5dcaa5 !important;
+}
+
+/*=============================================================
+    MAIN CONTENT
+  ===========================================================  
+ */
+ .expenses-categories {
+  flex-direction: column;
+  align-items: center;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.categories-container{
+    place-items: center;
+    margin: 0;
+    
+}
+.minicard{
+    width: 100%;
+    max-width: 500px;
+}
+.content-title{
+    font-size: 30px;
+    margin: 10px;
+}
+ .expense-value{
+    font-size: 35px;
+ }
+ .expenses p{
+    font-size: 14px;
+ }
+ .expenses{
+    gap: 30px;
+ }
+ .pie-chart-card{
+    padding: 10px;
+    width:100%;
+ }
+ .chart-container{
+    padding: 0px;
+    width:100%;
+ }
+ .chart-container h2{
+    margin-left: 10px;
+ }
+ /*=============================================================
+    BOTTOM BAR
+  ===========================================================  
+ */
+ .bottom-bar{
+    grid-row: 3;
+    padding: 10px;
+    overflow-y: none;
+    display: block;
+ }
+ .app-maintabs{
+    display: flex;
+    justify-content: space-around;
+ }
+ .app-maintabs li{
+    margin: 0;
+    padding: 0;
+ }
+ .list{
+    flex-direction: column;
+    align-items: center;
+    padding: 7px ;
+ }
+ .list svg{
+    height: 30px;
+    width: 30px;
+ }
+ .list h2{
+    font-size: 10px;
+ }
+ .selected {
+    border-radius: 12px;
+ }
+ .app-maintabs li:hover {
+  border-radius: 12px;
+}

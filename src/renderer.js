@@ -61,10 +61,10 @@ function renderChart() {
 
 /* USED FOR CHART RENDERING ONLY */
 const dashboardLi = document.querySelector(".dashboard");
+const dashboardMobileLi = document.querySelector(".dashboardMobile");
 function activeChecker() {
-  if (dashboardLi.classList.contains("selected")) {
+  if (dashboardLi.classList.contains("selected") || dashboardMobileLi.classList.contains("selected") ) {
     renderChart();
-    console.log("chart is rendered");
   } else {
     if (myChart) {
       myChart.destroy();

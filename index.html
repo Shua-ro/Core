@@ -10,7 +10,13 @@
       rel="stylesheet"
     />
 
-    <link href="src/index.css" rel="stylesheet" />
+    <link href="src/styles/index.css" rel="stylesheet" />
+    <link
+      href="src/styles/mobile.css"
+      rel="stylesheet"
+      media="(max-width: 450px)"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Core</title>
   </head>
@@ -88,7 +94,7 @@
             <h2>Groceries</h2>
           </div>
         </li>
-        <li data-target="pigery">
+        <!-- <li data-target="pigery">
           <div class="Pigery list">
             <svg
               viewBox="0 0 24 24"
@@ -109,7 +115,7 @@
               <path
                 d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267"
               />
-              <path
+              <pathW
                 d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267"
               />
               <path
@@ -118,7 +124,7 @@
             </svg>
             <h2>Pigery</h2>
           </div>
-        </li>
+        </li> -->
         <li data-target="allowance">
           <div class="Allowances list">
             <svg
@@ -189,7 +195,43 @@
         </div>
       </div>
     </div>
-
+    <nav class="mobile-nav">
+      <div class="logo-settings">
+        <h1 class="app-title">Core</h1>
+        <div class="mobile-settings" data-target="settings">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            class="nav-settings"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 15a3 3 0 100-6 3 3 0 000 6z"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <path
+              d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        
+      </div>
+      <div class="current-timeline">
+        <ul class="time-zone">
+          <li class="time-selected">Day</li>
+          <li>Week</li>
+          <li>Month</li>
+          <li>Year</li>
+        </ul>
+      </div>
+    </nav>
     <!-- ------RIGHT SIDE CONTENT----- -->
     <div class="main-content">
       <nav class="navigation">
@@ -265,7 +307,7 @@
               <h2 class="category-value groceries-value">₱10000</h2>
               <p class="last-grocery category-subp">Last grocery 4 days ago</p>
             </div>
-            <div class="pigery-expense card minicard">
+            <!-- <div class="pigery-expense card minicard">
               <div class="expense-category">
                 <svg
                   viewBox="0 0 24 24"
@@ -299,7 +341,7 @@
               <p class="restock-schedule category-subp">
                 Feed restock on Aug 12
               </p>
-            </div>
+            </div> -->
             <div class="allowance card minicard">
               <div class="expense-category">
                 <svg
@@ -363,8 +405,8 @@
             <p class="subp total">Total this month</p>
             <h2 class="electricity-expense-value"></h2>
           </div>
-          <div class="change-rate card positive">
-            <p class="subp total elec-change positive-text">Change</p>
+          <div class="change-rate card">
+            <p class="subp total elec-change">Change</p>
             <div class="rate-container">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -514,10 +556,10 @@
         </div>
       </section>
 
-      <section class="view" data-view="pigery">
+      <!-- <section class="view" data-view="pigery">
         <h1 class="content-title">Pigery</h1>
         <p class="subp total">Coming soon.</p>
-      </section>
+      </section> -->
 
       <!-- ALLOWANCE VIEW  -->
       <section class="view" data-view="allowance">
@@ -710,6 +752,149 @@
         <h1 class="content-title">Settings</h1>
         <p class="subp total">Coming soon.</p>
       </section>
+    </div>
+    <div class="bottom-bar">
+      <ul class="app-maintabs">
+        <li data-target="dashboard" class="dashboardMobile selected">
+          <div class="dashboard list">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1"
+              />
+              <path
+                d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1"
+              />
+              <path
+                d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1"
+              />
+              <path
+                d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1"
+              />
+            </svg>
+            <h2>Dashboard</h2>
+          </div>
+        </li>
+        <li data-target="electricity">
+          <div class="Electricity list">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+            </svg>
+            <h2>Electricity</h2>
+          </div>
+        </li>
+        <li data-target="groceries">
+          <div class="Groceries list">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+              <path d="M15 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+              <path d="M17 17h-11v-14h-2" />
+              <path d="M6 5l14 1l-1 7h-13" />
+            </svg>
+            <h2>Groceries</h2>
+          </div>
+        </li>
+        <!-- <li data-target="pigery">
+          <div class="Pigery list">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14.7 13.5c-1.1 -2 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538"
+              />
+              <path
+                d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052l-.001 0"
+              />
+              <path
+                d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267"
+              />
+              <path
+                d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267"
+              />
+              <path
+                d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082"
+              />
+            </svg>
+            <h2>Pigery</h2>
+          </div>
+        </li> -->
+        <li data-target="allowance">
+          <div class="Allowances list">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12"
+              />
+              <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
+            </svg>
+            <h2>Allowance</h2>
+          </div>
+        </li>
+        <li data-target="savings">
+          <div class="Savings list">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+              <path
+                d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"
+              />
+              <path d="M9 7l1 0" />
+              <path d="M9 13l6 0" />
+              <path d="M13 17l2 0" />
+            </svg>
+            <h2>Savings</h2>
+          </div>
+        </li>
+      </ul>
     </div>
   </body>
 
