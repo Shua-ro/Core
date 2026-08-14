@@ -140,3 +140,143 @@ padding: 5px 15px;
  .app-maintabs li:hover {
   border-radius: 12px;
 }
+ /*=============================================================
+    Electricity
+  ===========================================================  
+ */
+ .electricity-expense-value, .allowance-expense-value{
+  font-size: 35px;
+  margin: 0;
+ }
+ .percentage{
+  font-size: 35px;
+ }
+ .percentage-svg{
+  width: 30px;
+  height: 30px;
+  margin: 0;
+ }
+ .expenses{
+  gap: 10px;
+  justify-content: space-around;
+  margin: 0;
+  margin-bottom: 10px;
+ }
+ .expenses p{
+  font-size: 12px;
+
+ }
+
+ .subp{
+  margin: 0;
+ }
+ .total-this-month, .change-rate{
+  padding: 15px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-width: 130px;
+  max-width: 200px;
+ }
+
+ .add-expense{
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+ }
+ .inputs{
+  flex-direction: column;
+  gap: 10px;
+  margin-top:10px ;
+ }
+ .electricity-save{
+  margin: 0;
+  align-self: center;
+  width: 100%;
+ }
+ .entries{
+  margin: 0;
+ }
+ .recent-entries{
+  border :none;
+ }
+ .button{
+  margin: 0;
+ }
+ .table-head{
+  border: none;
+  display: none;
+ }
+ .table{
+  border: none;
+ }
+ .rowContainer{
+  border: none;
+  flex-direction: column;
+ background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(119, 119, 119, 0.06) 100%
+  );
+  padding: 15px;
+  border: 1px solid #192e28;
+  border-radius: 20px;
+ }
+ .row-value{
+  grid-template-columns:1fr 1fr ;
+  grid-template-rows: 1fr 1fr;
+  margin: 0;
+  width: 100%;
+ }
+ .valueamount{
+  text-align: right;
+ }
+ .action-buttons{
+  margin:0 ;
+ }
+ .btn-label{
+  display: none;
+ }
+
+  /*=============================================================
+    Groceries
+  ===========================================================  
+ */
+ .groceries-expenses{
+  justify-content: left;
+ }
+   /*=============================================================
+    Allowance
+  ===========================================================  
+ */
+  .allowance-expenses{
+  justify-content: left;
+  
+ }
+ .allowances-container{
+  margin: 0;
+  margin-bottom: 10px;
+  gap: 10px;
+ }
+ .joshua-expense.minicard{
+  padding: 0;
+  gap: 0;
+ }
+ .category-value{
+  font-size: 30px;
+ }
+ .expense-title{
+  font-size: 20px;
+ }
+ .allowance-name{
+  margin-top: 10px;
+ }
+ .category-subp{
+  margin-bottom: 15px;
+  font-size: 12px;
+ }
+ .whom select{
+  align-self: flex-start;
+ }
