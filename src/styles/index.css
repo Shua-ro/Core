@@ -245,8 +245,28 @@ nav.navigation {
   gap: 5px;
   padding: 30px;
   max-width: 350px;
+  
 }
-
+.svg{
+  display: none;
+}
+.sub{
+  display: none;
+}
+.expense-category svg {
+  background-color: var(--raisedcard);
+  padding: 8px;
+  border-radius: 10px;
+  box-sizing: content-box;
+}
+.category-value {
+  margin-top: 14px;
+  margin-bottom: 2px;
+}
+.category-subp {
+  margin-top: 0;
+  
+}
 /* ============================================
    SETTINGS
    ============================================ */
@@ -273,7 +293,8 @@ nav.navigation {
    SHARED CATEGORY-PAGE STYLES
    (used by Electricity / Allowance / Groceries etc.)
    ============================================ */
-.total-this-month {
+
+   .total-this-month {
   width: 300px;
   height: 135px;
   border-radius: 25px;
@@ -556,14 +577,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 10px;
   align-items: center;
   height: 40px;
-  margin-top: 30px;
+  
   margin-left: 20px;
   font-size: 12px;
 }
 .joshua-status,
 .jonas-status,
 .jasmine-status {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 .recurring {
   background-color: transparent;

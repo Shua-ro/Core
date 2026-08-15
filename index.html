@@ -14,7 +14,12 @@
     <link
       href="src/styles/mobile.css"
       rel="stylesheet"
-      media="(max-width: 450px)"
+      media="(max-width: 480px)"
+    />
+    <link
+      href="src/styles/tablet.css"
+      rel="stylesheet"
+      media="(max-width: 1040px) and (min-width: 480px)"
     />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -221,7 +226,6 @@
             />
           </svg>
         </div>
-        
       </div>
       <div class="current-timeline">
         <ul class="time-zone">
@@ -266,8 +270,8 @@
           </div>
 
           <div class="categories-container">
-            <div class="electricity-expense card minicard">
-              <div class="expense-category">
+            <div class="electricity-expense card minicard dashboard-minicard">
+              <div class="svg">
                 <svg
                   viewBox="0 0 24 24"
                   width="20"
@@ -280,13 +284,31 @@
                 >
                   <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
                 </svg>
+              </div>
+              <div class="expense-category">
+                <svg
+                  viewBox="0 0 24 24"
+                  class="svgdesktop"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                </svg>
                 <h1 class="expense-title">Electricity</h1>
+                <p class="electricty-status category-subp sub">
+                  Paid this month
+                </p>
               </div>
               <h2 class="category-value electricity-value">₱</h2>
-              <p class="electricty-status category-subp">Paid this month</p>
+              <p class="next-payment-savings category-subp sub1">Paid this month</p>
             </div>
-            <div class="groceries-expense card minicard">
-              <div class="expense-category">
+            <div class="groceries-expense card minicard dashboard-minicard">
+              <div class="svg">
                 <svg
                   viewBox="0 0 24 24"
                   width="20"
@@ -302,10 +324,29 @@
                   <path d="M17 17h-11v-14h-2" />
                   <path d="M6 5l14 1l-1 7h-13" />
                 </svg>
+              </div>
+              <div class="expense-category">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  class="svgdesktop"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                  <path d="M15 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                  <path d="M17 17h-11v-14h-2" />
+                  <path d="M6 5l14 1l-1 7h-13" />
+                </svg>
                 <h1 class="expense-title">Groceries</h1>
+                <p class="last-grocery category-subp sub">4 days ago</p>
               </div>
               <h2 class="category-value groceries-value">₱10000</h2>
-              <p class="last-grocery category-subp">Last grocery 4 days ago</p>
+              <p class="next-payment-savings category-subp sub1">4 days ago</p>
             </div>
             <!-- <div class="pigery-expense card minicard">
               <div class="expense-category">
@@ -342,8 +383,8 @@
                 Feed restock on Aug 12
               </p>
             </div> -->
-            <div class="allowance card minicard">
-              <div class="expense-category">
+            <div class="allowance card minicard dashboard-minicard">
+              <div class="svg">
                 <svg
                   viewBox="0 0 24 24"
                   width="20"
@@ -359,15 +400,34 @@
                   />
                   <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
                 </svg>
+              </div>
+              <div class="expense-category">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  class="svgdesktop"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12"
+                  />
+                  <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
+                </svg>
                 <h1 class="expense-title">Allowance</h1>
+                <p class="last-given-allowance category-subp sub">
+                  10 days ago
+                </p>
               </div>
               <h2 class="category-value allowance">₱10000</h2>
-              <p class="last-given-allowance category-subp">
-                Last given 10 days ago
-              </p>
+              <p class="next-payment-savings category-subp sub1">10 days ago</p>
             </div>
-            <div class="savings-expense card minicard">
-              <div class="expense-category">
+            <div class="savings-expense card minicard dashboard-minicard">
+              <div class="svg">
                 <svg
                   viewBox="0 0 24 24"
                   width="20"
@@ -386,12 +446,32 @@
                   <path d="M9 13l6 0" />
                   <path d="M13 17l2 0" />
                 </svg>
+              </div>
+              <div class="expense-category">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  class="svgdesktop"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                  <path
+                    d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"
+                  />
+                  <path d="M9 7l1 0" />
+                  <path d="M9 13l6 0" />
+                  <path d="M13 17l2 0" />
+                </svg>
                 <h1 class="expense-title">Savings</h1>
+                <p class="next-payment-savings category-subp sub">Aug 10</p>
               </div>
               <h2 class="category-value savings-value">₱10000</h2>
-              <p class="next-payment-savings category-subp">
-                Next Payment Aug 10
-              </p>
+              <p class="next-payment-savings category-subp sub1">Aug 10</p>
             </div>
           </div>
         </div>
@@ -572,26 +652,29 @@
         </div>
 
         <div class="allowances-container">
-          <div class="joshua-expense card minicard">
+          <div class="joshua-expense card minicard dashboard-minicard">
             <div class="allowance-name">
               <h1 class="expense-title name">Joshua</h1>
+              <p class="joshua-status category-subp sub">Last given 10 days ago</p>
             </div>
-            <h2 class="category-value electricity-value">₱10000</h2>
-            <p class="joshua-status category-subp">Last given 10 days ago</p>
+            <p class="joshua-status category-subp sub1">Last given 10 days ago</p>
+            <h2 class="category-value">₱10000</h2>
           </div>
-          <div class="joshua-expense card minicard">
+          <div class="jonas-expense card minicard dashboard-minicard">
             <div class="allowance-name">
               <h1 class="expense-title name">Jonas</h1>
+              <p class="jonas-status category-subp sub">last given 1 day ago</p>
             </div>
-            <h2 class="category-value electricity-value">₱10000</h2>
-            <p class="jonas-status category-subp">last given 1 day ago</p>
+            <p class="jonas-status category-subp sub1">last given 1 day ago</p>
+            <h2 class="category-value">₱10000</h2>
           </div>
-          <div class="joshua-expense card minicard">
+          <div class="jasmine-expense card minicard dashboard-minicard">
             <div class="allowance-name">
               <h1 class="expense-title name">Jasmine</h1>
+              <p class="jasmine-status category-subp sub">last given 1 day ago</p>
             </div>
-            <h2 class="category-value electricity-value">₱10000</h2>
-            <p class="jasmine-status category-subp">last given 1 day ago</p>
+            <p class="jasmine-status category-subp sub1">last given 1 day ago</p>
+            <h2 class="category-value">₱10000</h2>
           </div>
         </div>
         <div class="add-expense card">
@@ -655,7 +738,7 @@
       <section class="view" data-view="savings">
         <h1 class="content-title">Savings</h1>
 
-        <div class="expenses">
+        <div class="expenses savings-categoryadd">
           <div class="total-this-month card">
             <p class="subp">Total Savings</p>
             <h2 class="savings-total-value">₱0</h2>

@@ -87,7 +87,7 @@ nav.navigation {
   margin: 10px;
 }
 .expense-value {
-  font-size: 35px;
+  font-size: 50px;
 }
 .expenses p {
   font-size: 14px;
@@ -202,13 +202,14 @@ margin-left: auto;
   margin: 0;
 }
 .expenses {
-  gap: 10px;
-  justify-content: space-around;
+  gap: 20;
+  justify-content: flex-start;
   margin: 0;
   margin-bottom: 10px;
 }
 .expenses p {
-  font-size: 12px;
+  font-size: 16px;
+  
 }
 
 .subp {
