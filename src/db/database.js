@@ -1,12 +1,11 @@
-import Database from 'better-sqlite3';
-import { app, BrowserWindow, Menu } from "electron";
+import Database from "better-sqlite3";
+import { app } from "electron";
 import path from "node:path";
 
-const dbLocation = path.join(app.getPath('userData'), "coreApp.db");
+const dbLocation = path.join(app.getPath("userData"), "coreApp.db");
 
-const db = new Database(dbLocation); 
+const db = new Database(dbLocation);
 console.log(dbLocation);
-
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS electricity (
@@ -32,10 +31,4 @@ db.exec(`
 
     `);
 
-function getElectricity() {
-    const stmt = db.prepare('SELECT * FROM electricity ORDER BY date DESC');
-    return stmt.all();
-}
-export { db, getElectricity};
-
-
+export { db };

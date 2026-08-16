@@ -43,7 +43,6 @@ input::-webkit-inner-spin-button {
    PAGE LAYOUT (body / nav shell)
    ============================================ */
 body {
-  
   background: linear-gradient(
     45deg,
     rgba(15, 110, 86, 0.212) 0%,
@@ -65,7 +64,7 @@ nav {
   align-items: center;
   min-height: 100px;
 }
-.mobile-nav{
+.mobile-nav {
   display: none;
 }
 .view {
@@ -132,8 +131,8 @@ nav {
 .selected h2 {
   color: #5dcaa5;
 }
-.bottom-bar{
-    display: none;
+.bottom-bar {
+  display: none;
 }
 /* ============================================
    MAIN CONTENT SHELL
@@ -245,12 +244,11 @@ nav.navigation {
   gap: 5px;
   padding: 30px;
   max-width: 350px;
-  
 }
-.svg{
+.svg {
   display: none;
 }
-.sub{
+.sub {
   display: none;
 }
 .expense-category svg {
@@ -265,7 +263,6 @@ nav.navigation {
 }
 .category-subp {
   margin-top: 0;
-  
 }
 /* ============================================
    SETTINGS
@@ -294,7 +291,7 @@ nav.navigation {
    (used by Electricity / Allowance / Groceries etc.)
    ============================================ */
 
-   .total-this-month {
+.total-this-month {
   width: 300px;
   height: 135px;
   border-radius: 25px;
@@ -396,7 +393,7 @@ nav.navigation {
   border-radius: 10px;
   border: none;
   align-self: flex-end;
-  margin-right:30px;
+  margin-right: 30px;
 }
 .groceries-save,
 .electricity-save {
@@ -494,6 +491,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .action-buttons {
   margin-left: auto;
+  display: flex;
+  gap: 10px;
 }
 .action-buttons button {
   color: white;
@@ -509,7 +508,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  
 }
 #elec-pagination-info {
   font-size: 0.85rem;
@@ -577,7 +575,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 10px;
   align-items: center;
   height: 40px;
-  
+
   margin-left: 20px;
   font-size: 12px;
 }
@@ -624,10 +622,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
    SAVINGS
    ============================================ */
 .new-category-card {
-  width:330px;
+  width: 330px;
   height: 135px;
   border-radius: 25px;
-  
 }
 .new-category-inputs {
   display: flex;
@@ -654,11 +651,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .savings-total-value {
   margin-left: 30px;
-  font-size:48px ;
+  font-size: 48px;
 }
-.subp{
+.subp {
   margin-left: 30px;
 }
-.new-category-inputs{
+.new-category-inputs {
   margin-left: 30px;
 }

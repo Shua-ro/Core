@@ -1,6 +1,10 @@
-const elecPaginationInfo = document.getElementById("elec-pagination-info");
+document.addEventListener("DOMContentLoaded", () => {
+  loadElectricityData(electricityPage);
+});
+
 /* SAVE BUTTON LOGIC */
-const electricityButton = document.querySelector(".electricity-save");
+
+const elecPaginationInfo = document.getElementById("elec-pagination-info");
 const electricityForm = document.getElementById("elec-form");
 
 electricityForm.addEventListener("submit", async (e) => {
@@ -31,32 +35,31 @@ async function loadElectricityData(page) {
   const changeRate = change(entries);
   rateChange.innerText = changeRate;
 
-  entryAppending(entries, page);
+  entryAppendingGroceries(entries, page);
   paginationControls(page, entries);
 }
 
-function entryAppending(entries, page) {
-  const rower = document.querySelector(".row");
+function entryAppendingGroceries(entries, page) {
   const rowContainer = document.getElementById("elec-row");
   rowContainer.innerHTML = "";
 
-  const pageRow = pageValues(entries, page);
+  const pageRow = pageValuesElectricity(entries, page);
   pageRow.forEach((rows) => {
     const flexContainerRow = document.createElement("div");
     flexContainerRow.classList.add("rowContainer");
     /* Row */
-    const row = createElectricalRows(rows);
+    const row = createGroceriesRows(rows);
     flexContainerRow.appendChild(row);
 
     /* Button */
-    const buttons = createElectricalActionButtons(rows, page);
+    const buttons = createGroceriesActionButtons(rows, page);
 
     flexContainerRow.appendChild(buttons);
 
     rowContainer.appendChild(flexContainerRow);
   });
 }
-function createElectricalRows(data) {
+function createGroceriesRows(data) {
   const col1 = document.createElement("p");
   const col2 = document.createElement("p");
   const col3 = document.createElement("p");
@@ -75,6 +78,7 @@ function createElectricalRows(data) {
   if (data.amount) {
     col2.innerText = "₱" + data.amount;
   } else if (data.amount === "") {
+    col2.innerText = "0";
   } else {
     col2.innerText = "----";
   }
@@ -95,7 +99,7 @@ function createElectricalRows(data) {
   row.appendChild(col3);
   return row;
 }
-function createElectricalActionButtons(rows, page) {
+function createGroceriesActionButtons(rows, page) {
   const col1 = document.createElement("button");
   const col2 = document.createElement("button");
 
@@ -107,11 +111,8 @@ function createElectricalActionButtons(rows, page) {
   <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
   <path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/>
 </svg>
-<span class="btn-label">Edit</span>`
-;
+<span class="btn-label">Edit</span>`;
 
-
-  
   col2.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <polyline points="3 6 5 6 21 6"/>
   <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
@@ -152,9 +153,8 @@ function change(entries) {
 
   return Math.abs(rate).toFixed(0) + "%";
 }
-function pageValues(entries, page) {
+function pageValuesElectricity(entries, page) {
   const pageSize = 3;
-  const totalPages = Math.ceil(entries.length / pageSize);
 
   const currentPage = page;
   const start = (currentPage - 1) * pageSize;
@@ -181,7 +181,9 @@ function paginationControls(page, entries) {
 function changeRateColor(rate) {
   const changeRate = document.querySelector(".change-rate");
   const trendIcon = document.querySelector(".percentage-svg");
-  const electricityPercentage = document.querySelector(".electricity-percentage");
+  const electricityPercentage = document.querySelector(
+    ".electricity-percentage",
+  );
   const changeTitle = document.querySelector(".elec-change");
 
   // reset everything first
@@ -222,8 +224,3 @@ elecNext.addEventListener("click", () => {
   electricityPage++;
   loadElectricityData(electricityPage);
 });
-
-async function singleDeletions(id) {
-  await window.electronAPI.deleteElectricity(id);
-  console.log("delete successfull");
-}

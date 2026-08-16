@@ -63,7 +63,10 @@ function renderChart() {
 const dashboardLi = document.querySelector(".dashboard");
 const dashboardMobileLi = document.querySelector(".dashboardMobile");
 function activeChecker() {
-  if (dashboardLi.classList.contains("selected") || dashboardMobileLi.classList.contains("selected") ) {
+  if (
+    dashboardLi.classList.contains("selected") ||
+    dashboardMobileLi.classList.contains("selected")
+  ) {
     renderChart();
   } else {
     if (myChart) {
@@ -94,6 +97,5 @@ document.addEventListener("DOMContentLoaded", () => {
   navInit();
   viewName("dashboard");
   renderChart();
-  loadElectricityData(electricityPage); /* Refer to electricity.js */
+  /* loadElectricityData(electricityPage); */ /* Refer to electricity.js */
 });
-
