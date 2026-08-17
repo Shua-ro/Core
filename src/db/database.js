@@ -28,7 +28,18 @@ db.exec(`
         date DATE NOT NULL,
         child TEXT DEFAULT '--'
     );
-
+    
+    CREATE TABLE IF NOT EXISTS savingsCategory (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        category TEXT DEFAULT '--'
+    );
+    CREATE TABLE IF NOT EXISTS savings (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        category TEXT DEFAULT '--',
+        amount INTEGER NOT NULL DEFAULT 0,
+        date DATE NOT NULL,
+        note TEXT DEFAULT '--'
+    );
     `);
 
 export { db };

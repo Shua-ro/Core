@@ -9,4 +9,13 @@ contextBridge.exposeInMainWorld("electronAPI", {
   addGrocery: (data) => ipcRenderer.invoke("addGrocery", data),
   getGrocery: () => ipcRenderer.invoke("getGrocery"),
   deleteGrocery: (id) => ipcRenderer.invoke("deleteGrocery", id),
+  addAllowance: (data) => ipcRenderer.invoke("addAllowance", data),
+  getAllowance: () => ipcRenderer.invoke("getAllowance"),
+  deleteAllowance: (id) => ipcRenderer.invoke("deleteAllowance", id),
+  addCategory: (name) => ipcRenderer.invoke("addCategory", name),
+  deleteCategory: (id) => ipcRenderer.invoke("deleteCategory", id),
+  getCategory: () => ipcRenderer.invoke("getCategory"),
+  addSavings: (data) => ipcRenderer.invoke("addSavings", data),
+  deleteSavings: (id) => ipcRenderer.invoke("addSavings", id),
+  getSavings: () => ipcRenderer.invoke("getSavings"),
 });

@@ -1,23 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
   loadAllowanceData(allowancePage);
 });
-const allowanceForm = document.getElementById("grocery-form");
+const allowanceForm = document.getElementById("allowance-form");
 allowanceForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const result = {
-    amount: document.getElementById("grocery-amount").value.trim(),
-    date: document.getElementById("grocery-date").value.trim(),
-    note: document.getElementById("grocery-note").value.trim(),
+    amount: document.getElementById("allowance-amount").value.trim(),
+    date: document.getElementById("allowance-date").value.trim(),
+    child: document.getElementById("person").value.trim(),
   };
-  await window.electronAPI.addGrocery(result);
+  console.log(result);
+
+  await window.electronAPI.addAllowance(result);
   loadAllowanceData(allowancePage);
   allowanceForm.reset();
 });
-const totalValueAllowanceMain = document.querySelector(".groceries-value");
-const totalValueAllowance = document.querySelector(".grocery-expense-value");
+const totalValueAllowanceMain = document.querySelector(".allowance-main");
+const totalValueAllowance = document.querySelector(".allowance-expense-value");
 /* MAIN FUNCTION */
 async function loadAllowanceData(page) {
-  const entries = await window.electronAPI.getGrocery();
+  const entries = await window.electronAPI.getAllowance();
   const total = await allowanceTotal();
   totalValueAllowance.innerText = "₱" + total;
   totalValueAllowanceMain.innerText = "₱" + total;
@@ -30,7 +32,7 @@ async function loadAllowanceData(page) {
 }
 
 async function allowanceTotal() {
-  const entries = await window.electronAPI.getGrocery();
+  const entries = await window.electronAPI.getAllowance();
   const total = entries.reduce((sum, row) => {
     return sum + Number(row.amount);
   }, 0);
@@ -38,7 +40,7 @@ async function allowanceTotal() {
 }
 
 function entryAppendingAllowance(entries, page) {
-  const rowContainer = document.getElementById("groceries-row");
+  const rowContainer = document.getElementById("allowance-row");
 
   rowContainer.innerHTML = "";
 
@@ -47,18 +49,18 @@ function entryAppendingAllowance(entries, page) {
     const flexContainerRow = document.createElement("div");
     flexContainerRow.classList.add("rowContainer");
     /* Row */
-    const row = createGroceriesRows(rows);
+    const row = createAllowanceRows(rows);
     flexContainerRow.appendChild(row);
 
     /* Button */
-    const buttons = createGroceriesActionButtons(rows, page);
+    const buttons = createAllowanceActionButtons(rows, page);
 
     flexContainerRow.appendChild(buttons);
 
     rowContainer.appendChild(flexContainerRow);
   });
 }
-function createGroceriesRows(data) {
+function createAllowanceRows(data) {
   const col1 = document.createElement("p");
   const col2 = document.createElement("p");
   const col3 = document.createElement("p");
@@ -82,9 +84,9 @@ function createGroceriesRows(data) {
     col2.innerText = "----";
   }
 
-  if (data.note) {
-    col3.innerText = data.note;
-  } else if (data.note === "") {
+  if (data.child) {
+    col3.innerText = data.child;
+  } else if (data.child === "") {
     col3.innerText = "----";
   } else {
     col3.innerText = "----";
@@ -98,7 +100,7 @@ function createGroceriesRows(data) {
   row.appendChild(col3);
   return row;
 }
-function createGroceriesActionButtons(rows, page) {
+function createAllowanceActionButtons(rows, page) {
   const col1 = document.createElement("button");
   const col2 = document.createElement("button");
 
@@ -125,7 +127,7 @@ function createGroceriesActionButtons(rows, page) {
 
   col2.addEventListener("click", async () => {
     const buttonId = col2.dataset.id;
-    await window.electronAPI.deleteGrocery(Number(buttonId));
+    await window.electronAPI.deleteAllowance(Number(buttonId));
     loadAllowanceData(page);
   });
 
@@ -145,8 +147,8 @@ function pageValuesElectricity(entries, page) {
 function paginationControls(page, entries) {
   const pageSize = 3;
   const totalPages = Math.ceil(entries.length / pageSize);
-  const groceryPaginationInfo = document.getElementById(
-    "groceries-pagination-info",
+  const allowancePaginationInfo = document.getElementById(
+    "allowance-pagination-info",
   );
 
   if (page <= 1) {
@@ -159,12 +161,12 @@ function paginationControls(page, entries) {
   } else {
     elecNext.disabled = false;
   }
-  groceryPaginationInfo.innerText =
+  allowancePaginationInfo.innerText =
     "Showing page " + page + " of " + totalPages;
 }
 let allowancePage = 1;
-const elecPrev = document.getElementById("groceries-prev");
-const elecNext = document.getElementById("groceries-next");
+const elecPrev = document.getElementById("allowance-prev");
+const elecNext = document.getElementById("allowance-next");
 
 elecPrev.addEventListener("click", () => {
   allowancePage--;

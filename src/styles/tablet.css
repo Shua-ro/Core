@@ -79,8 +79,7 @@ nav.navigation {
 }
 .minicard {
   width: 100%;
-  max-width: 500px;
-  
+  max-width: 300px;
 }
 .content-title {
   font-size: 30px;
@@ -107,39 +106,43 @@ nav.navigation {
 .chart-container h2 {
   margin-left: 10px;
 }
-.expense-category{
+.expense-category {
   display: flex;
-  flex-direction:column ;
+  flex-direction: column;
   height: auto;
   align-items: flex-start;
   gap: 0px;
   align-self: center;
 }
-.dashboard-minicard{
+.dashboard-minicard {
   flex-direction: row;
   justify-content: flex-start;
   min-height: 80px;
-  
 }
-.svg{
+.svg {
   display: flex;
   align-items: center;
 }
-.svgdesktop{
+.svgdesktop {
   display: none;
 }
-.sub1{
+.sub1 {
   display: none;
 }
-.sub{
+.sub {
   display: block;
 }
-.electricty-status, .last-grocery, .last-given-allowance, .next-payment-savings{
+.electricty-status,
+.last-grocery,
+.last-given-allowance,
+.next-payment-savings {
   margin: 0px !important;
-  
 }
-.electricity-value,.groceries-value,.allowance,.savings-value{
-margin-left: auto;
+.electricity-value,
+.groceries-value,
+.allowance,
+.savings-value {
+  margin-left: auto;
 }
 
 /*=============================================================
@@ -178,10 +181,9 @@ margin-left: auto;
 .app-maintabs li:hover {
   border-radius: 12px;
 }
-.minicard{
-  padding: 15px ;
+.minicard {
+  padding: 15px;
   gap: 0px;
-  
 }
 
 /*=============================================================
@@ -209,7 +211,6 @@ margin-left: auto;
 }
 .expenses p {
   font-size: 16px;
-  
 }
 
 .subp {
@@ -276,7 +277,7 @@ margin-left: auto;
   margin: 0;
   width: 100%;
 }
-.row{
+.row {
   gap: 10px;
 }
 .valueamount {
@@ -308,9 +309,11 @@ margin-left: auto;
   margin-bottom: 10px;
   gap: 10px;
 }
-.joshua-expense.minicard, .jonas-expense.minicard, .jasmine-expense.minicard {
-display: flex;
-align-items: center;
+.joshua-expense.minicard,
+.jonas-expense.minicard,
+.jasmine-expense.minicard {
+  display: flex;
+  align-items: center;
 }
 .category-value {
   font-size: 30px;
@@ -328,7 +331,7 @@ align-items: center;
 .whom select {
   align-self: flex-start;
 }
-.allowance-name{
+.allowance-name {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -336,14 +339,16 @@ align-items: center;
   margin: 0px;
   justify-content: center;
 }
-.name{
+.name {
   text-align: left;
 }
-.allowance-name .category-subp{
+.allowance-name .category-subp {
   margin: 0px;
 }
-.joshua-expense .category-value, .jonas-expense .category-value, .jasmine-expense .category-value{
-margin-left:auto ;
+.joshua-expense .category-value,
+.jonas-expense .category-value,
+.jasmine-expense .category-value {
+  margin-left: auto;
 }
 
 /*=============================================================
@@ -376,7 +381,7 @@ margin-left:auto ;
   height: 30px;
 }
 .new-category-inputs button:hover {
-  background-color: #04342c ;
+  background-color: #04342c;
   color: #5dcaa5;
   border: 1px solid #5dcaa5;
   transition: all 0.2s ease;
@@ -385,7 +390,7 @@ margin-left:auto ;
   display: flex;
   flex-direction: column;
 }
-.new-category-inputs input{
+.new-category-inputs input {
   margin-top: 10px;
   padding: 10px;
 }

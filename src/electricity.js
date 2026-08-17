@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* SAVE BUTTON LOGIC */
-
 const elecPaginationInfo = document.getElementById("elec-pagination-info");
 const electricityForm = document.getElementById("elec-form");
 
@@ -35,31 +34,31 @@ async function loadElectricityData(page) {
   const changeRate = change(entries);
   rateChange.innerText = changeRate;
 
-  entryAppendingGroceries(entries, page);
+  entryAppendingSavings(entries, page);
   paginationControls(page, entries);
 }
 
-function entryAppendingGroceries(entries, page) {
+function entryAppendingSavings(entries, page) {
   const rowContainer = document.getElementById("elec-row");
   rowContainer.innerHTML = "";
 
-  const pageRow = pageValuesElectricity(entries, page);
+  const pageRow = pageValuesSavings(entries, page);
   pageRow.forEach((rows) => {
     const flexContainerRow = document.createElement("div");
     flexContainerRow.classList.add("rowContainer");
     /* Row */
-    const row = createGroceriesRows(rows);
+    const row = createSavingsRows(rows);
     flexContainerRow.appendChild(row);
 
     /* Button */
-    const buttons = createGroceriesActionButtons(rows, page);
+    const buttons = createSavingsActionButtons(rows, page);
 
     flexContainerRow.appendChild(buttons);
 
     rowContainer.appendChild(flexContainerRow);
   });
 }
-function createGroceriesRows(data) {
+function createSavingsRows(data) {
   const col1 = document.createElement("p");
   const col2 = document.createElement("p");
   const col3 = document.createElement("p");
@@ -99,7 +98,7 @@ function createGroceriesRows(data) {
   row.appendChild(col3);
   return row;
 }
-function createGroceriesActionButtons(rows, page) {
+function createSavingsActionButtons(rows, page) {
   const col1 = document.createElement("button");
   const col2 = document.createElement("button");
 
@@ -153,7 +152,7 @@ function change(entries) {
 
   return Math.abs(rate).toFixed(0) + "%";
 }
-function pageValuesElectricity(entries, page) {
+function pageValuesSavings(entries, page) {
   const pageSize = 3;
 
   const currentPage = page;

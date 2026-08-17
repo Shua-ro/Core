@@ -425,7 +425,7 @@
                   10 days ago
                 </p>
               </div>
-              <h2 class="category-value allowance">₱10000</h2>
+              <h2 class="category-value allowance allowance-main">₱10000</h2>
               <p class="next-payment-savings category-subp sub1">10 days ago</p>
             </div>
             <div class="savings-expense card minicard dashboard-minicard">
@@ -698,14 +698,26 @@
             <h3>Add expense</h3>
             <button class="recurring button">Recurring</button>
           </div>
-          <form class="inputs">
+          <form id="allowance-form" class="inputs">
             <div class="amount">
               <p class="subp">Amount</p>
-              <input class="Enters" type="number" placeholder="0.0" />
+              <input
+                id="allowance-amount"
+                class="Enters"
+                type="number"
+                placeholder="0.0"
+                required
+              />
             </div>
             <div class="date">
               <p class="subp">Date</p>
-              <input class="Enters" type="date" placeholder="0.0" />
+              <input
+                id="allowance-date"
+                class="Enters"
+                type="date"
+                placeholder="0.0"
+                required
+              />
             </div>
             <div class="whom">
               <p class="subp">To</p>
@@ -736,16 +748,14 @@
                 <button class="button bulkdel">Bulk delete</button>
               </div>
             </div>
-            <div class="row">
-              <div class="row-value">
-                <p class="valuedate">Aug 12</p>
-                <p class="valueamount">100</p>
-                <p class="valuechild">----</p>
-              </div>
-              <div class="action-buttons">
-                <button class="button bulkdel">Edit</button>
-                <button class="button bulkdel">Delete</button>
-              </div>
+          </div>
+          <div class="row" id="allowance-row"></div>
+          <div class="pagination">
+            <p id="allowance-pagination-info"></p>
+            <div class="page-controls">
+              <button id="allowance-prev" class="page-arrow">‹</button>
+              <div id="allowance-page-numbers" class="page-numbers"></div>
+              <button id="allowance-next" class="page-arrow">›</button>
             </div>
           </div>
         </div>
@@ -759,20 +769,20 @@
             <p class="subp">Total Savings</p>
             <h2 class="savings-total-value">₱0</h2>
           </div>
-
+          <div class="category-containers"></div>
           <div class="new-category-card card">
             <p class="subp">New category</p>
-            <div class="new-category-inputs">
+            <form id="new-category-inputs-id" class="new-category-inputs">
               <input
                 id="savings-category-name"
                 class="Enters"
                 type="text"
                 placeholder="e.g. Emergency Fund"
               />
-              <button type="button" class="button savings-add-category">
+              <button type="submit" class="button savings-add-category">
                 Create
               </button>
-            </div>
+            </form>
           </div>
         </div>
 
@@ -1001,5 +1011,7 @@
   <script src="node_modules/chart.js/dist/chart.umd.js"></script>
   <script type="module" src="src/groceries.js"></script>
   <script type="module" src="src/electricity.js"></script>
+  <script type="module" src="src/allowance.js"></script>
+  <script type="module" src="src/savings.js"></script>
   <script src="src/renderer.js"></script>
 </html>
