@@ -208,6 +208,7 @@ nav.navigation {
   justify-content: space-around;
   margin: 0;
   margin-bottom: 10px;
+  flex-direction: column;
 }
 .expenses p {
   font-size: 12px;
@@ -393,4 +394,19 @@ nav.navigation {
 .new-category-inputs input {
   margin-top: 10px;
   padding: 10px;
+}
+/* ===========================================================
+  GROCERY
+  =============================================================== */
+.grocery-expense-value {
+  margin: 0;
+}
+/* ======================================================================
+SAVINGS
+========================================================================= */
+.category-minicard {
+  max-width: none;
+}
+.category-containers {
+  gap: 10px;
 }

@@ -1,3 +1,4 @@
+import { totalExpense } from "./renderer";
 document.addEventListener("DOMContentLoaded", () => {
   /* loadSavingsData(electricityPage); */
   loadCategories();
@@ -20,16 +21,17 @@ async function loadCategories() {
   const entries = await window.electronAPI.getSavings();
 
   categories.forEach((category) => {
-    createCardCategory(entries, category.category);
+    createCardCategory(entries, category.category, category);
     addCategorySelection(category.category);
   });
 }
-function createCardCategory(entries, categoryName) {
+function createCardCategory(entries, categoryName, category) {
   const cardContainer = document.createElement("div");
   cardContainer.classList.add("card");
   cardContainer.classList.add("minicard");
+  cardContainer.classList.add("category-minicard");
 
-  const categoryTitle = document.createElement("₱0");
+  const categoryTitle = document.createElement("p");
   categoryTitle.classList.add("subp");
   categoryTitle.innerText = categoryName;
 
@@ -43,7 +45,40 @@ function createCardCategory(entries, categoryName) {
   cardContainer.appendChild(totalOfCategory);
   categoryContainer.appendChild(cardContainer);
 
-  console.log(categoryTotalsCalculator(entries, categoryName));
+  const col1 = document.createElement("button");
+  const col2 = document.createElement("button");
+
+  col1.classList.add("button", "edit", "category-buttons");
+  col2.classList.add("button", "del", "elec-del", "category-buttons");
+  col2.dataset.id = category.id;
+
+  col1.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+  <path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/>
+</svg>
+<span class="btn-label">Edit</span>`;
+
+  col2.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="3 6 5 6 21 6"/>
+  <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+  <path d="M10 11v6"/>
+  <path d="M14 11v6"/>
+  <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+</svg>
+<span class="btn-label">Delete</span>`;
+  const row = document.createElement("div");
+  row.classList.add("action-buttons-category");
+  row.classList.add("action-buttons");
+
+  col2.addEventListener("click", async () => {
+    const buttonId = col2.dataset.id;
+    await window.electronAPI.deleteSavings(Number(buttonId));
+    /* loadSavingsData(page); */
+  });
+
+  row.appendChild(col1);
+  row.appendChild(col2);
+  cardContainer.appendChild(row);
 }
 function categoryTotalsCalculator(entries, categoryName) {
   return (
@@ -70,6 +105,7 @@ SavingsForm.addEventListener("submit", async (e) => {
   };
   await window.electronAPI.addSavings(result);
   loadSavingsData(savingsPage);
+  totalExpense();
   SavingsForm.reset();
 });
 const totalValueSavingsMain = document.querySelector(".savings-value");
@@ -200,6 +236,7 @@ function createSavingsActionButtons(rows, page) {
   col2.addEventListener("click", async () => {
     const buttonId = col2.dataset.id;
     await window.electronAPI.deleteSavings(Number(buttonId));
+    await totalExpense();
     loadSavingsData(page);
   });
 

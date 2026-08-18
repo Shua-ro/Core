@@ -160,7 +160,7 @@ nav.navigation {
 .expenses {
   display: flex;
   justify-content: left;
-  flex-direction: column;
+
   margin: 20px;
   gap: 20px;
 }
@@ -663,4 +663,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .new-category-inputs {
   margin-left: 30px;
+}
+/* ====================================================================
+  GROCERY
+  ======================================================================== */
+.grocery-expense-value {
+  font-size: 48px;
+  margin-left: 30px;
+}
+
+.action-buttons-category {
+  margin-left: auto !important;
 }

@@ -240,10 +240,10 @@
     <div class="main-content">
       <nav class="navigation">
         <ul class="time-zone">
-          <li>Day</li>
-          <li>Week</li>
-          <li>Month</li>
-          <li>Year</li>
+          <li id="day" data-timezone="day">Day</li>
+          <li id="week" data-timezone="week">Week</li>
+          <li id="month" data-timezone="month">Month</li>
+          <li id="year" data-timezone="year">Year</li>
         </ul>
       </nav>
 
@@ -252,11 +252,11 @@
         <h1 class="content-title">Dashboard</h1>
         <div class="expenses">
           <div>
-            <h2 class="expense-value">₱10000</h2>
+            <h2 class="expense-value dashboardTotal">₱0</h2>
             <p class="expense-name">Total Expense</p>
           </div>
           <div>
-            <h2 class="expense-value">₱10000</h2>
+            <h2 class="expense-value projectedTotal">₱0</h2>
             <p>Projected Expense</p>
           </div>
         </div>
@@ -1009,9 +1009,9 @@
 
   <!-- Chart.js loaded locally so it should work offline -->
   <script src="node_modules/chart.js/dist/chart.umd.js"></script>
+  <script type="module" src="src/renderer.js"></script>
   <script type="module" src="src/groceries.js"></script>
   <script type="module" src="src/electricity.js"></script>
   <script type="module" src="src/allowance.js"></script>
   <script type="module" src="src/savings.js"></script>
-  <script src="src/renderer.js"></script>
 </html>
