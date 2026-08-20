@@ -1,6 +1,3 @@
-/* ============================================
-   RESET & ROOT VARIABLES
-   ============================================ */
 * {
   margin: 0;
   padding: 0;
@@ -8,15 +5,36 @@
 }
 
 :root {
+  /* Page background */
+  --page-a: #0a0f0d;
+  --page-b: #0c1613;
+
   /* Cards & stuff */
-  --page: #000000;
-  --card: #151513;
-  --raisedcard: #1e1e1c;
-  --border: #2a2a28;
+  --card: rgba(255, 255, 255, 0.035);
+  --border: rgba(255, 255, 255, 0.07);
+  --raisedcard: rgba(255, 255, 255, 0.055);
+
   /* For text */
-  --primary: #edece6;
-  --secondary: #b8b7b2;
-  --muted: #6e6e69;
+  --primary: #f2f1ea;
+  --secondary: #a8a79f;
+  --muted: #6f6f6a;
+
+  /* Brand */
+  --brand: #4fd6a8;
+  --brand-dim: #0c2b23;
+
+  /* Category accents */
+  --electricity: #f5b942;
+  --electricity-bg: #2c2210;
+  --groceries: #4ea8f0;
+  --groceries-bg: #0f2333;
+  --allowance: #f2688a;
+  --allowance-bg: #331420;
+  --savings: #4fd6a8;
+  --savings-bg: #0c2b23;
+
+  --danger: #ff5c5c;
+  --success: #3ecf8e;
 }
 
 /* ============================================
@@ -43,18 +61,23 @@ input::-webkit-inner-spin-button {
    PAGE LAYOUT (body / nav shell)
    ============================================ */
 body {
-  background: linear-gradient(
-    45deg,
-    rgba(15, 110, 86, 0.212) 0%,
-    rgba(102, 102, 102, 0.2) 100%
-  );
-  background-color: black;
+  background:
+    radial-gradient(
+      1200px 700px at 15% -10%,
+      rgba(79, 214, 168, 0.1),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 600px at 100% 0%,
+      rgba(78, 168, 240, 0.06),
+      transparent 55%
+    ),
+    linear-gradient(180deg, var(--page-a), var(--page-b));
+  background-color: var(--page-a);
   font-family: "Manrope";
-  color: white;
+  color: var(--primary);
   display: grid;
   grid-template-columns: 250px 1fr;
-  /* width: 100vw;
-  overflow-x: hidden; */
   height: 100dvh;
   min-height: 0;
   width: auto;
@@ -76,60 +99,99 @@ nav {
 .time-zone {
   display: flex;
   list-style-type: none;
-  color: #6e6e69;
-  font-weight: bold;
+  color: var(--muted);
+  font-weight: 700;
   padding: 0;
   margin: 0;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   margin-left: 30px;
-  gap: 40px;
+  gap: 8px;
+}
+.time-zone li {
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+.time-zone li:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.time-zone li.time-selected,
+.time-zone li.active-timezone {
+  background: var(--brand-dim);
+  color: var(--brand);
 }
 
 /* ============================================
    SIDEBAR
    ============================================ */
 .sidebar {
-  /*  border: 1px solid white; */
   display: flex;
   flex-direction: column;
   gap: 0;
-  color: #edece6;
+  color: var(--primary);
   height: auto;
+  padding-top: 10px;
 }
 .app-title {
   margin-left: 30px;
+  font-family: "Syne";
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
+.app-maintabs {
+  margin-top: 10px;
+  padding: 0 10px;
+}
 .app-maintabs li {
   list-style-type: none;
-  padding: 20px;
-  margin: 10px;
+  padding: 14px 18px;
+  margin: 6px 0;
+  border-radius: 14px;
 }
 .app-maintabs li:hover {
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 14px;
   background-color: var(--raisedcard);
   transition: all 0.2s ease;
 }
 .list {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  align-items: center;
+  gap: 12px;
+  font-family: "Syne";
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--secondary);
+}
+.list svg {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.list h2 {
+  font-size: 14.5px;
+  font-weight: 600;
   font-family: "Syne";
 }
 .selected svg {
-  color: #5dcaa5;
+  color: var(--brand);
 }
 .selected {
-  border: 1px solid black;
-  border-radius: 20px;
-  background-color: #04342c;
+  border: 1px solid rgba(79, 214, 168, 0.25);
+  border-radius: 14px;
+  background-color: var(--brand-dim);
 }
 .app-maintabs li.selected:hover {
-  background-color: #04342c;
+  background-color: var(--brand-dim);
 }
 .selected h2 {
-  color: #5dcaa5;
+  color: var(--brand);
 }
 .bottom-bar {
   display: none;
@@ -138,20 +200,23 @@ nav {
    MAIN CONTENT SHELL
    ============================================ */
 .main-content {
-  /* border: 1px solid white; */
   min-height: 0;
   overflow-y: auto;
-  color: #edece6;
+  color: var(--primary);
   width: auto;
+  padding: 0 30px 40px;
 }
 .content-title {
   margin: 30px; /* Should maintain 30px margin horizontal */
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 nav.navigation {
   display: flex;
   align-items: flex-end;
   height: 100px;
-  border-bottom: 1px solid #2a2a28;
+  border-bottom: 1px solid var(--border);
 }
 
 /* ============================================
@@ -162,27 +227,33 @@ nav.navigation {
   justify-content: left;
 
   margin: 20px;
-  gap: 20px;
+  gap: 10px;
 }
 .expense-value {
-  font-size: 64px;
-  font-weight: bold;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1;
+  font-family: "Syne";
 }
 .expenses p {
-  font-size: 18.7px;
-  color: #6e6e69;
-  font-weight: bold;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 8px;
 }
 .expenses-categories {
   display: flex;
-  gap: 50px;
+  gap: 24px;
+  align-items: stretch;
 }
 
 .categories-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  align-items: center;
-  gap: 20px;
+  align-items: stretch;
+  gap: 16px;
   width: 100%;
   margin-right: 30px;
   margin-bottom: 30px;
@@ -192,41 +263,55 @@ nav.navigation {
   gap: 10px;
   align-items: center;
   height: 40px;
-  margin-left: 20px;
+  margin-left: 0px;
   font-size: 12px;
 }
+.expense-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  font-family: "Syne";
+}
 .category-value {
-  font-size: 44px;
+  font-size: 34px;
+  font-weight: 800;
+  font-family: "Syne";
   margin-left: 20px;
 }
 .category-subp {
   margin-left: 20px;
   color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 600;
 }
 
 /* ============================================
    CARDS & CHART (shared)
    ============================================ */
 .card {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(119, 119, 119, 0.06) 100%
-  );
+  background: linear-gradient(160deg, var(--raisedcard), var(--card));
+  border: 1px solid var(--border);
+  border-radius: 20px;
 }
 .card.minicard:hover {
-  transform: translateY(-8px);
-  transition: all 0.3s ease-out;
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.14);
+  transition: all 0.2s ease-out;
 }
 .pie-chart-card {
   height: 470px;
   width: 470px;
-  border-radius: 25px;
+  border-radius: 24px;
   flex-shrink: 0;
+  padding: 4px;
 }
 .chart-container {
   height: 470px;
   padding: 30px;
+}
+.chart-container h2 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 #myChart {
   border: none;
@@ -243,7 +328,7 @@ nav.navigation {
   width: auto;
   border-radius: 20px;
   gap: 5px;
-  padding: 30px;
+  padding: 22px;
   max-width: 350px;
 }
 .svg {
@@ -254,10 +339,35 @@ nav.navigation {
 }
 .expense-category svg {
   background-color: var(--raisedcard);
+  color: var(--muted);
   padding: 8px;
   border-radius: 10px;
   box-sizing: content-box;
+  width: 17px;
+  height: 17px;
 }
+
+/* Per-category icon accent colors, matching the dashboard legend */
+.electricity-expense .expense-category svg {
+  background-color: var(--electricity-bg);
+  color: var(--electricity);
+}
+.groceries-expense .expense-category svg {
+  background-color: var(--groceries-bg);
+  color: var(--groceries);
+}
+.allowance .expense-category svg,
+.joshua-expense .expense-category svg,
+.jonas-expense .expense-category svg,
+.jasmine-expense .expense-category svg {
+  background-color: var(--allowance-bg);
+  color: var(--allowance);
+}
+.savings-expense .expense-category svg {
+  background-color: var(--savings-bg);
+  color: var(--savings);
+}
+
 .category-value {
   margin-top: 14px;
   margin-bottom: 2px;
@@ -273,19 +383,27 @@ nav.navigation {
   align-items: center;
   gap: 12px;
   margin: 10px;
-  padding: 20px;
+  padding: 16px 18px;
   margin-top: auto;
+  border-radius: 14px;
+  color: var(--secondary);
+  font-family: "Syne";
+  font-weight: 600;
+  font-size: 14.5px;
+}
+.settings-option:hover {
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+}
+.settings-option svg {
+  color: var(--muted);
 }
 .settings-box {
   display: flex;
   flex-direction: column;
-
+  padding-bottom: 10px;
   margin-top: auto;
 }
-/* .settings-option h1 {
-  margin: 0;
-  font-size: 20px;
-} */
 
 /* ============================================
    SHARED CATEGORY-PAGE STYLES
@@ -293,9 +411,10 @@ nav.navigation {
    ============================================ */
 
 .total-this-month {
-  width: 300px;
+  width: 320px;
   height: 135px;
   border-radius: 25px;
+  padding: 26px 0;
 }
 .total {
   margin-left: 30px;
@@ -303,25 +422,34 @@ nav.navigation {
 .subp {
   margin-top: 20px;
   color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 .electricity-expense-value,
 .allowance-expense-value {
   font-size: 48px;
   margin-left: 30px;
+  font-family: "Syne";
+  font-weight: 800;
 }
 .change-rate {
   width: 300px;
   height: 135px;
   border-radius: 25px;
+  padding: 26px 0;
 }
 .percentage {
   font-size: 48px;
+  font-family: "Syne";
+  font-weight: 800;
 }
 .percentage-svg {
   margin-left: 30px;
 }
 .downtrend {
-  color: #ff4545 !important;
+  color: var(--danger) !important;
   transform: scaleY(-1);
 }
 .rate-container {
@@ -332,22 +460,22 @@ nav.navigation {
 .negative {
   background: linear-gradient(
     180deg,
-    rgba(255, 0, 0, 0.137) 0%,
-    rgba(80, 1, 1, 0.06) 100%
+    rgba(255, 92, 92, 0.14) 0%,
+    rgba(51, 20, 32, 0.06) 100%
   );
 }
 .positive {
   background: linear-gradient(
     180deg,
-    rgba(9, 255, 0, 0.137) 0%,
-    rgba(17, 80, 1, 0.06) 100%
+    rgba(79, 214, 168, 0.16) 0%,
+    rgba(12, 43, 35, 0.06) 100%
   );
 }
 .negative-text {
-  color: #ff4545 !important;
+  color: var(--danger) !important;
 }
 .positive-text {
-  color: #16a34a !important;
+  color: var(--success) !important;
 }
 
 /* ============================================
@@ -360,15 +488,20 @@ nav.navigation {
   width: 100%;
   max-width: 1000px;
   height: 175px;
-  border-radius: 25px;
+  border-radius: 20px;
   padding-top: 20px;
+}
+.add-expense h3 {
+  font-family: "Syne";
+  font-size: 16px;
+  font-weight: 700;
 }
 .inputs {
   display: flex;
   gap: 40px;
 }
 .inputs input {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.02);
   border: 2px solid var(--border);
   margin-top: 10px;
   height: 45px;
@@ -377,10 +510,16 @@ nav.navigation {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 10px;
-  color: white;
+  color: var(--primary);
+  font-family: "Manrope";
+  transition: border-color 0.15s ease;
+}
+.inputs input:focus {
+  outline: none;
+  border-color: var(--brand);
 }
 .note input {
-  max-width: 300px;
+  max-width: none;
 }
 .amount,
 .note,
@@ -390,11 +529,19 @@ nav.navigation {
 .button {
   width: 110px;
   height: 45px;
-  background-color: white;
+  background-color: var(--primary);
+  color: var(--page-a);
+  font-weight: 700;
   border-radius: 10px;
   border: none;
   align-self: flex-end;
   margin-right: 30px;
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+.button:hover {
+  opacity: 0.88;
 }
 .groceries-save,
 .electricity-save {
@@ -423,8 +570,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .recent-entries {
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 15px;
+  padding: 15px 20px;
   margin-top: 10px;
+}
+.recent-entries h2 {
+  font-family: "Syne";
+  font-size: 16px;
+  font-weight: 700;
 }
 .entries {
   display: flex;
@@ -438,6 +590,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border: 1px solid var(--border);
   border-radius: 20px;
   margin-bottom: 10px;
+  background: linear-gradient(160deg, var(--raisedcard), var(--card));
 }
 .table-head {
   display: flex;
@@ -447,19 +600,27 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-top: 10px;
   padding-right: 15px;
 }
+.table-head h4 {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
 .row {
   display: flex;
   flex-direction: column;
   gap: 5px;
   width: 100%;
-
-  /* padding: 10px; */
 }
 .rowContainer {
   display: flex;
   padding-top: 5px;
   padding-bottom: 5px;
   border-bottom: 1px solid var(--border);
+}
+.rowContainer:hover {
+  background: rgba(255, 255, 255, 0.02);
 }
 .row-value {
   display: grid;
@@ -486,6 +647,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .edit {
   height: 35px;
   width: 90px;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--primary);
+  font-family: "Manrope";
+  font-weight: 600;
+}
+.edit {
+  margin: 0;
+}
+
+.bulkdel:hover,
+.del:hover,
+.edit:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+.del:hover {
+  border-color: var(--danger);
+  color: var(--danger);
 }
 .table-values {
   border: 1px solid var(--border);
@@ -496,9 +677,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 10px;
 }
 .action-buttons button {
-  color: white;
+  color: var(--primary);
   background-color: transparent;
-  border: 1px solid white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.action-buttons button:hover {
+  border-color: var(--brand);
+  color: var(--brand);
 }
 
 /* ============================================
@@ -510,9 +696,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   padding: 12px 16px;
 }
-#elec-pagination-info {
+#elec-pagination-info,
+[id$="-pagination-info"] {
   font-size: 0.85rem;
-  opacity: 0.7;
+  color: var(--muted);
+  opacity: 1;
 }
 .page-controls {
   display: flex;
@@ -529,7 +717,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border: none;
   border-radius: 6px;
   background: transparent;
-  color: inherit;
+  color: var(--secondary);
   cursor: pointer;
   font-size: 0.85rem;
 }
@@ -537,8 +725,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background: rgba(255, 255, 255, 0.08);
 }
 .page-number.active {
-  background: #3987e5;
-  color: white;
+  background: var(--brand-dim);
+  color: var(--brand);
 }
 .page-arrow {
   width: 28px;
@@ -546,7 +734,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border: none;
   border-radius: 6px;
   background: transparent;
-  color: inherit;
+  color: var(--secondary);
   cursor: pointer;
   font-size: 1rem;
 }
@@ -591,8 +779,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .recurring {
   background-color: transparent;
-  color: var(--muted);
+  color: var(--secondary);
   border: 1px solid var(--border);
+}
+.recurring:hover {
+  border-color: var(--brand);
+  color: var(--brand);
 }
 .buttons-allowance {
   display: flex;
@@ -609,13 +801,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   flex: 1;
   min-width: 0;
   height: 45px;
-  color: var(--muted);
+  color: var(--secondary);
   border: 2px solid var(--border);
   border-radius: 10px;
   padding: 10px;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.02);
   padding-right: 20px;
   align-self: flex-end;
+  font-family: "Manrope";
 }
 .card-title-recurring {
   display: flex;
@@ -630,6 +823,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 330px;
   height: 135px;
   border-radius: 25px;
+  padding: 22px 0;
 }
 .new-category-inputs {
   display: flex;
@@ -637,19 +831,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-top: 15px;
 }
 .new-category-inputs input {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.02);
   border: 2px solid var(--border);
   height: 40px;
   flex: 1;
   min-width: 0;
   padding-left: 10px;
   border-radius: 10px;
-  color: white;
+  color: var(--primary);
   font-family: "Manrope";
 }
 .savings-categories {
   margin-left: 20px;
   margin-right: 20px;
+}
+.total-this-month p,
+.new-category-card p {
+  margin-left: 30px;
 }
 .savings-heads {
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -657,9 +855,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .savings-total-value {
   margin-left: 30px;
   font-size: 48px;
+  font-family: "Syne";
+  font-weight: 800;
 }
 .subp {
-  margin-left: 30px;
 }
 .new-category-inputs {
   margin-left: 30px;
@@ -670,6 +869,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .grocery-expense-value {
   font-size: 48px;
   margin-left: 30px;
+  font-family: "Syne";
+  font-weight: 800;
 }
 
 .action-buttons-category {

@@ -4,8 +4,6 @@ body {
 }
 .main-content {
   grid-row: 2;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 /*=============================================================
@@ -91,9 +89,7 @@ nav.navigation {
 .expenses p {
   font-size: 14px;
 }
-.expenses {
-  gap: 30px;
-}
+
 .pie-chart-card {
   padding: 10px;
   width: 100%;
@@ -118,6 +114,7 @@ nav.navigation {
   flex-direction: row;
   justify-content: flex-start;
   min-height: 80px;
+  gap: 10px;
 }
 .svg {
   display: flex;
@@ -183,7 +180,6 @@ nav.navigation {
 }
 .minicard {
   padding: 15px;
-  gap: 0px;
 }
 
 /*=============================================================
@@ -204,7 +200,7 @@ nav.navigation {
   margin: 0;
 }
 .expenses {
-  gap: 10px;
+  gap: 5px;
   justify-content: space-around;
   margin: 0;
   margin-bottom: 10px;
@@ -224,8 +220,8 @@ nav.navigation {
   display: flex;
   flex-direction: column;
   height: auto;
-  min-width: 130px;
-  max-width: 200px;
+  min-width: 200px;
+  max-width: 250px;
 }
 
 .add-expense {
@@ -317,7 +313,7 @@ nav.navigation {
   align-items: center;
 }
 .category-value {
-  font-size: 30px;
+  font-size: 20px;
 }
 .expense-title {
   font-size: 16px;
@@ -356,6 +352,10 @@ nav.navigation {
     Savings
   ===========================================================  
  */
+.total-this-month p,
+.new-category-card p {
+  margin-left: 0px;
+}
 .savings-total-value {
   font-size: 35px;
   margin: 0;
@@ -400,6 +400,7 @@ nav.navigation {
   =============================================================== */
 .grocery-expense-value {
   margin: 0;
+  font-size: 35px;
 }
 /* ======================================================================
 SAVINGS

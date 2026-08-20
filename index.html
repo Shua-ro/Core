@@ -14,12 +14,12 @@
     <link
       href="src/styles/mobile.css"
       rel="stylesheet"
-      media="(max-width: 480px)"
+      media="(max-width: 550px)"
     />
     <link
       href="src/styles/tablet.css"
       rel="stylesheet"
-      media="(max-width: 1040px) and (min-width: 480px)"
+      media="(max-width: 1040px) and (min-width: 550px)"
     />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -229,7 +229,7 @@
       </div>
       <div class="current-timeline">
         <ul class="time-zone">
-          <li class="time-selected">Day</li>
+          <li class="">Day</li>
           <li>Week</li>
           <li>Month</li>
           <li>Year</li>
@@ -505,7 +505,7 @@
                 <polyline points="3 7 9 13 13 9 21 17"></polyline>
                 <polyline points="14 17 21 17 21 10"></polyline>
               </svg>
-              <h2 class="percentage electricity-percentage positive-text"></h2>
+              <h2 class="percentage electricity-percentage"></h2>
             </div>
           </div>
         </div>
@@ -558,9 +558,9 @@
                 <h4 class="amount">Amount</h4>
                 <h4 class="note">Note</h4>
               </div>
-              <div class="bulk-button">
+              <!-- <div class="bulk-button">
                 <button class="button bulkdel">Bulk delete</button>
-              </div>
+              </div> -->
             </div>
             <div class="row" id="elec-row"></div>
             <div class="pagination">
@@ -670,7 +670,7 @@
             <p class="joshua-status category-subp sub1">
               Last given 10 days ago
             </p>
-            <h2 class="category-value">₱10000</h2>
+            <h2 class="category-value">₱0</h2>
           </div>
           <div class="jonas-expense card minicard dashboard-minicard">
             <div class="allowance-name">
@@ -678,7 +678,7 @@
               <p class="jonas-status category-subp sub">last given 1 day ago</p>
             </div>
             <p class="jonas-status category-subp sub1">last given 1 day ago</p>
-            <h2 class="category-value">₱10000</h2>
+            <h2 class="category-value">₱0</h2>
           </div>
           <div class="jasmine-expense card minicard dashboard-minicard">
             <div class="allowance-name">
@@ -690,7 +690,7 @@
             <p class="jasmine-status category-subp sub1">
               last given 1 day ago
             </p>
-            <h2 class="category-value">₱10000</h2>
+            <h2 class="category-value">₱0</h2>
           </div>
         </div>
         <div class="add-expense card">
@@ -744,9 +744,9 @@
                 <h4 class="amount">Amount</h4>
                 <h4 class="child">Child</h4>
               </div>
-              <div class="bulk-button">
+              <!-- <div class="bulk-button">
                 <button class="button bulkdel">Bulk delete</button>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="row" id="allowance-row"></div>
@@ -769,7 +769,7 @@
             <p class="subp">Total Savings</p>
             <h2 class="savings-total-value">₱0</h2>
           </div>
-          <div class="category-containers"></div>
+          <div class="hidden"></div>
           <div class="new-category-card card">
             <p class="subp">New category</p>
             <form id="new-category-inputs-id" class="new-category-inputs">
@@ -840,14 +840,14 @@
                 <h4 class="amount">Amount</h4>
                 <h4 class="note">Note</h4>
               </div>
-              <div class="bulk-button">
+              <!-- <div class="bulk-button">
                 <button class="button bulkdel">Bulk delete</button>
-              </div>
+              </div> -->
             </div>
             <div class="row" id="savings-row"></div>
           </div>
           <div class="pagination">
-            <p id="savings-pagination-info">Showing 0 of 0</p>
+            <p id="savings-pagination-info"></p>
             <div class="page-controls">
               <button id="savings-prev" class="page-arrow">‹</button>
               <div id="savings-page-numbers" class="page-numbers"></div>

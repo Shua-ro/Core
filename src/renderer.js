@@ -66,6 +66,7 @@ function activeChecker() {
     }
   }
 }
+
 export async function totalExpense() {
   const electricityTotal = await window.electronAPI.getElectricity();
   const groceryTotal = await window.electronAPI.getGrocery();
@@ -86,7 +87,7 @@ export async function totalExpense() {
   }, 0);
 
   const overAll = elecTotal + grocerytotal + allowancetotal + savingstotal;
-  dashboardTotal.innerText = overAll;
+  dashboardTotal.innerText = "₱" + overAll;
   renderChart(elecTotal, grocerytotal, allowancetotal, savingstotal);
 }
 /* REMOVING AND ADDING HIGHLIGHT IN SIDE PANNEL */

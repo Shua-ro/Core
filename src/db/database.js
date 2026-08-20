@@ -40,6 +40,7 @@ db.exec(`
         date DATE NOT NULL,
         note TEXT DEFAULT '--'
     );
+
     `);
 
 export { db };
