@@ -41,6 +41,7 @@ db.exec(`
         note TEXT DEFAULT '--'
     );
 
+    
     `);
 
 export { db };

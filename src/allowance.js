@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   loadAllowanceData(allowancePage);
+  forAllowanceValue();
 });
 const allowanceForm = document.getElementById("allowance-form");
 allowanceForm.addEventListener("submit", async (e) => {
@@ -13,6 +14,7 @@ allowanceForm.addEventListener("submit", async (e) => {
 
   await window.electronAPI.addAllowance(result);
   loadAllowanceData(allowancePage);
+  forAllowanceValue();
   allowanceForm.reset();
 });
 const totalValueAllowanceMain = document.querySelector(".allowance-main");
@@ -30,7 +32,31 @@ async function loadAllowanceData(page) {
   entryAppendingAllowance(entries, page);
   paginationControls(page, entries);
 }
+async function forAllowanceValue() {
+  const entries = await window.electronAPI.getAllowance();
+  let josh = 0;
+  let janrry = 0;
+  let min = 0;
+  entries.forEach((entry) => {
+    if (entry.child === "Joshua") {
+      josh += entry.amount;
+    } else if (entry.child === "Jonas") {
+      janrry += entry.amount;
+    } else if (entry.child === "Jasmine") {
+      min += entry.amount;
+    } else {
+      return;
+    }
+  });
 
+  const joshua = document.querySelector(".joshua");
+  const jonas = document.querySelector(".jonas");
+  const jasmine = document.querySelector(".jasmine");
+
+  joshua.innerText = josh;
+  jonas.innerText = janrry;
+  jasmine.innerText = min;
+}
 async function allowanceTotal() {
   const entries = await window.electronAPI.getAllowance();
   const total = entries.reduce((sum, row) => {
@@ -129,6 +155,7 @@ function createAllowanceActionButtons(rows, page) {
     const buttonId = col2.dataset.id;
     await window.electronAPI.deleteAllowance(Number(buttonId));
     loadAllowanceData(page);
+    forAllowanceValue();
   });
 
   row.appendChild(col1);

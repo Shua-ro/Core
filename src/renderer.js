@@ -99,7 +99,7 @@ function removeActiveSide() {
 }
 function navInit() {
   listTarget.forEach((list) => {
-    list.addEventListener("click", (e) => {
+    list.addEventListener("click", () => {
       removeActiveSide();
       list.classList.toggle("selected");
       viewName(list.dataset.target);

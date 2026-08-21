@@ -754,17 +754,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
    ALLOWANCE
    ============================================ */
 .allowances-container,
-.category-containers {
+.category-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   width: 100%;
   max-width: 1000px;
   margin-left: 20px;
   margin-bottom: 20px;
 }
-.category-containers {
+.category-container {
   margin: 0;
 }
 .allowance-name {
@@ -823,6 +823,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /* ============================================
    SAVINGS
    ============================================ */
+.hidden {
+  display: none;
+}
 .new-category-card {
   width: 330px;
   height: 135px;

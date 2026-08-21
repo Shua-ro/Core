@@ -8,22 +8,29 @@ const newCategoryForm = document.getElementById("new-category-inputs-id");
 
 newCategoryForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-
   const categoryName = document.getElementById("savings-category-name");
   await window.electronAPI.addCategory(categoryName.value);
   loadCategories();
+  newCategoryForm.reset();
 });
 
-const categoryContainer = document.querySelector(".category-containers");
-
+const categoryContainer = document.querySelector(".category-container");
+console.log(categoryContainer);
 async function loadCategories() {
   const categories = await window.electronAPI.getCategory();
   const entries = await window.electronAPI.getSavings();
-
+  categoryContainer.innerHTML = "";
+  addCategorySelection("");
   categories.forEach((category) => {
     createCardCategory(entries, category.category, category);
     addCategorySelection(category.category);
   });
+
+  if (categories.length <= 0) {
+    categoryContainer.classList.add("hidden");
+  } else {
+    categoryContainer.classList.remove("hidden");
+  }
 }
 function createCardCategory(entries, categoryName, category) {
   const cardContainer = document.createElement("div");
@@ -51,6 +58,7 @@ function createCardCategory(entries, categoryName, category) {
   col1.classList.add("button", "edit", "category-buttons");
   col2.classList.add("button", "del", "elec-del", "category-buttons");
   col2.dataset.id = category.id;
+  console.log(category.id);
 
   col1.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
@@ -70,9 +78,14 @@ function createCardCategory(entries, categoryName, category) {
   row.classList.add("action-buttons-category");
   row.classList.add("action-buttons");
 
+  const buttonId = col2.dataset.id;
   col2.addEventListener("click", async () => {
-    const buttonId = col2.dataset.id;
-    await window.electronAPI.deleteSavings(Number(buttonId));
+    await window.electronAPI.deleteCategory(Number(buttonId));
+    addCategorySelection("");
+    console.log(buttonId);
+    loadCategories();
+    console.log("deleted");
+
     /* loadSavingsData(page); */
   });
 
@@ -105,6 +118,7 @@ SavingsForm.addEventListener("submit", async (e) => {
   };
   await window.electronAPI.addSavings(result);
   loadSavingsData(savingsPage);
+  loadCategories();
   totalExpense();
   SavingsForm.reset();
 });
@@ -125,6 +139,11 @@ async function loadSavingsData(page) {
 }
 function addCategorySelection(categoryNames) {
   const select = document.getElementById("savings-category-select");
+  if (categoryNames === "") {
+    select.innerHTML =
+      "<option value disabled selected>Choose category</option>";
+    return;
+  }
   const newOption = new Option(categoryNames, categoryNames);
   select.add(newOption);
 }
@@ -237,6 +256,7 @@ function createSavingsActionButtons(rows, page) {
     const buttonId = col2.dataset.id;
     await window.electronAPI.deleteSavings(Number(buttonId));
     await totalExpense();
+    loadCategories();
     loadSavingsData(page);
   });
 

@@ -53,9 +53,9 @@ ipcMain.handle("addCategory", (event, name) => {
   const result = stmt.run(name);
   return result;
 });
-ipcMain.handle("DeleteCategory", (event, id) => {
-  const stmt = db.prepapre("DELETE FROM savingsCategory WHERE id=?");
-  const result = stmt.run(id.category);
+ipcMain.handle("deleteCategory", (event, id) => {
+  const stmt = db.prepare("DELETE FROM savingsCategory WHERE id=?");
+  const result = stmt.run(id);
   return result;
 });
 

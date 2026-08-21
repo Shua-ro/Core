@@ -201,7 +201,7 @@ nav.navigation {
   margin: 0;
 }
 .expenses {
-  gap: 25px;
+  gap: 10px;
   justify-content: flex-start;
   margin: 0;
   margin-bottom: 10px;
