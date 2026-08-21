@@ -72,6 +72,7 @@ nav.navigation {
   margin-left: 5px;
   margin-right: 5px;
 }
+
 .categories-container {
   place-items: center;
   gap: 10px;
@@ -200,7 +201,7 @@ nav.navigation {
   margin: 0;
 }
 .expenses {
-  gap: 5px;
+  gap: 25px;
   justify-content: flex-start;
   margin: 0;
   margin-bottom: 10px;
