@@ -1,4 +1,6 @@
 import { totalExpense } from "./renderer";
+
+let savingsPage = 1;
 document.addEventListener("DOMContentLoaded", () => {
   /* loadSavingsData(electricityPage); */
   loadCategories();
@@ -15,12 +17,14 @@ newCategoryForm.addEventListener("submit", async (e) => {
 });
 
 const categoryContainer = document.querySelector(".category-container");
-console.log(categoryContainer);
+
 async function loadCategories() {
   const categories = await window.electronAPI.getCategory();
   const entries = await window.electronAPI.getSavings();
   categoryContainer.innerHTML = "";
   addCategorySelection("");
+  console.log("loadCategories Run");
+
   categories.forEach((category) => {
     createCardCategory(entries, category.category, category);
     addCategorySelection(category.category);
@@ -58,7 +62,6 @@ function createCardCategory(entries, categoryName, category) {
   col1.classList.add("button", "edit", "category-buttons");
   col2.classList.add("button", "del", "elec-del", "category-buttons");
   col2.dataset.id = category.id;
-  console.log(category.id);
 
   col1.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
@@ -81,9 +84,12 @@ function createCardCategory(entries, categoryName, category) {
   const buttonId = col2.dataset.id;
   col2.addEventListener("click", async () => {
     await window.electronAPI.deleteCategory(Number(buttonId));
+    await window.electronAPI.deleteCategoryWSavings(categoryName);
+
     addCategorySelection("");
     console.log(buttonId);
-    loadCategories();
+    await loadSavingsData(savingsPage);
+    await loadCategories();
     console.log("deleted");
 
     /* loadSavingsData(page); */
@@ -92,14 +98,14 @@ function createCardCategory(entries, categoryName, category) {
   row.appendChild(col1);
   row.appendChild(col2);
   cardContainer.appendChild(row);
+  const realCategoryContainer = document.getElementById("savings-categories");
+  realCategoryContainer.appendChild(cardContainer);
 }
 function categoryTotalsCalculator(entries, categoryName) {
   return (
     "₱" +
     entries.reduce((accumulator, row) => {
       if (row.category === categoryName) {
-        console.log(accumulator + Number(row.amount));
-
         return accumulator + Number(row.amount);
       } else {
         return accumulator;
@@ -293,7 +299,7 @@ function paginationControls(page, entries) {
   savingsPaginationInfo.innerText =
     "Showing page " + page + " of " + totalPages;
 }
-let savingsPage = 1;
+
 const elecPrev = document.getElementById("savings-prev");
 const elecNext = document.getElementById("savings-next");
 

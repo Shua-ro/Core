@@ -21,7 +21,7 @@ nav.navigation {
 }
 .app-title {
   margin: 0;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .logo-settings {
   display: flex;
@@ -47,6 +47,7 @@ nav.navigation {
 .time-zone {
   margin-bottom: 30px;
   gap: 10px;
+  margin-left: 30px;
 }
 
 .time-zone li {
@@ -85,6 +86,7 @@ nav.navigation {
 .content-title {
   font-size: 30px;
   margin: 10px;
+  margin-left: 0px;
 }
 .expense-value {
   font-size: 35px;

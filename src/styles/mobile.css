@@ -82,6 +82,7 @@ nav.navigation {
 .content-title {
   font-size: 30px;
   margin: 10px;
+  margin-left: 0px;
 }
 .expense-value {
   font-size: 35px;

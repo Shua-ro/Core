@@ -72,6 +72,11 @@ ipcMain.handle("deleteSavings", (event, id) => {
   const result = stmt.run(id);
   return result;
 });
+ipcMain.handle("deleteCategoryWSavings", (event, categoryname) => {
+  const stmt = db.prepare("DELETE FROM savings WHERE category=?");
+  const result = stmt.run(categoryname);
+  return result;
+});
 
 /*============================================================================================
    GET HANDLERS LOGIC 

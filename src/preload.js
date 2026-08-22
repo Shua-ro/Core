@@ -18,4 +18,6 @@ contextBridge.exposeInMainWorld("electronAPI", {
   addSavings: (data) => ipcRenderer.invoke("addSavings", data),
   deleteSavings: (id) => ipcRenderer.invoke("deleteSavings", id),
   getSavings: () => ipcRenderer.invoke("getSavings"),
+  deleteCategoryWSavings: (categoryname) =>
+    ipcRenderer.invoke("deleteCategoryWSavings", categoryname),
 });

@@ -10,7 +10,6 @@ allowanceForm.addEventListener("submit", async (e) => {
     date: document.getElementById("allowance-date").value.trim(),
     child: document.getElementById("person").value.trim(),
   };
-  console.log(result);
 
   await window.electronAPI.addAllowance(result);
   loadAllowanceData(allowancePage);
@@ -25,9 +24,6 @@ async function loadAllowanceData(page) {
   const total = await allowanceTotal();
   totalValueAllowance.innerText = "₱" + total;
   totalValueAllowanceMain.innerText = "₱" + total;
-
-  /* console.log(entries);
-  console.log(pageValuesElectricity(entries, page)); */
 
   entryAppendingAllowance(entries, page);
   paginationControls(page, entries);
@@ -53,9 +49,9 @@ async function forAllowanceValue() {
   const jonas = document.querySelector(".jonas");
   const jasmine = document.querySelector(".jasmine");
 
-  joshua.innerText = josh;
-  jonas.innerText = janrry;
-  jasmine.innerText = min;
+  joshua.innerText = "₱" + josh;
+  jonas.innerText = "₱" + janrry;
+  jasmine.innerText = "₱" + min;
 }
 async function allowanceTotal() {
   const entries = await window.electronAPI.getAllowance();
