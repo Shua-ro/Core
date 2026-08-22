@@ -1,3 +1,17 @@
+import { loadElectricityData, electricityPage } from "./electricity";
+import { loadGroceriesData, groceriesPage } from "./groceries";
+import { loadAllowanceData, allowancePage } from "./allowance";
+import { loadCategories, loadSavingsData, savingsPage } from "./savings";
+export let page = 1;
+
+export function renderAll() {
+  loadElectricityData(electricityPage);
+  loadGroceriesData(groceriesPage);
+  loadAllowanceData(allowancePage);
+  loadCategories();
+  loadSavingsData(savingsPage);
+}
+
 let myChart = null;
 
 /* This fucntion handles the toggling of the view class for sections*/
@@ -113,5 +127,5 @@ document.addEventListener("DOMContentLoaded", () => {
   viewName("dashboard");
   /* renderChart(); */
   totalExpense();
-  /* loadElectricityData(electricityPage); */ /* Refer to electricity.js */
+  renderAll();
 });

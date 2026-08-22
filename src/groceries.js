@@ -1,8 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
-  loadAllowanceData(allowancePage);
-});
-const allowanceForm = document.getElementById("grocery-form");
-allowanceForm.addEventListener("submit", async (e) => {
+import { renderAll } from "./renderer";
+const GroceriesForm = document.getElementById("grocery-form");
+GroceriesForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const result = {
     amount: document.getElementById("grocery-amount").value.trim(),
@@ -10,26 +8,26 @@ allowanceForm.addEventListener("submit", async (e) => {
     note: document.getElementById("grocery-note").value.trim(),
   };
   await window.electronAPI.addGrocery(result);
-  loadAllowanceData(allowancePage);
-  allowanceForm.reset();
+  renderAll(groceriesPage);
+  GroceriesForm.reset();
 });
-const totalValueAllowanceMain = document.querySelector(".groceries-value");
-const totalValueAllowance = document.querySelector(".grocery-expense-value");
+const totalValueGroceriesMain = document.querySelector(".groceries-value");
+const totalValueGroceries = document.querySelector(".grocery-expense-value");
 /* MAIN FUNCTION */
-async function loadAllowanceData(page) {
+export async function loadGroceriesData(page) {
   const entries = await window.electronAPI.getGrocery();
-  const total = await allowanceTotal();
-  totalValueAllowance.innerText = "₱" + total;
-  totalValueAllowanceMain.innerText = "₱" + total;
+  const total = await groceriesTotal();
+  totalValueGroceries.innerText = "₱" + total;
+  totalValueGroceriesMain.innerText = "₱" + total;
 
   /* console.log(entries);
   console.log(pageValuesElectricity(entries, page)); */
 
-  entryAppendingAllowance(entries, page);
+  entryAppendingGroceries(entries, page);
   paginationControls(page, entries);
 }
 
-async function allowanceTotal() {
+async function groceriesTotal() {
   const entries = await window.electronAPI.getGrocery();
   const total = entries.reduce((sum, row) => {
     return sum + Number(row.amount);
@@ -37,7 +35,7 @@ async function allowanceTotal() {
   return total;
 }
 
-function entryAppendingAllowance(entries, page) {
+function entryAppendingGroceries(entries, page) {
   const rowContainer = document.getElementById("groceries-row");
 
   rowContainer.innerHTML = "";
@@ -126,7 +124,7 @@ function createGroceriesActionButtons(rows, page) {
   col2.addEventListener("click", async () => {
     const buttonId = col2.dataset.id;
     await window.electronAPI.deleteGrocery(Number(buttonId));
-    loadAllowanceData(page);
+    renderAll(page);
   });
 
   row.appendChild(col1);
@@ -162,15 +160,15 @@ function paginationControls(page, entries) {
   groceryPaginationInfo.innerText =
     "Showing page " + page + " of " + totalPages;
 }
-let allowancePage = 1;
+export let groceriesPage = 1;
 const elecPrev = document.getElementById("groceries-prev");
 const elecNext = document.getElementById("groceries-next");
 
 elecPrev.addEventListener("click", () => {
-  allowancePage--;
-  loadAllowanceData(allowancePage);
+  groceriesPage--;
+  renderAll(groceriesPage);
 });
 elecNext.addEventListener("click", () => {
-  allowancePage++;
-  loadAllowanceData(allowancePage);
+  groceriesPage++;
+  renderAll(groceriesPage);
 });

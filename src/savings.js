@@ -1,24 +1,20 @@
 import { totalExpense } from "./renderer";
+import { renderAll } from "./renderer";
+export let savingsPage = 1;
 
-let savingsPage = 1;
-document.addEventListener("DOMContentLoaded", () => {
-  /* loadSavingsData(electricityPage); */
-  loadCategories();
-  loadSavingsData(savingsPage);
-});
 const newCategoryForm = document.getElementById("new-category-inputs-id");
 
 newCategoryForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const categoryName = document.getElementById("savings-category-name");
   await window.electronAPI.addCategory(categoryName.value);
-  loadCategories();
+  renderAll();
   newCategoryForm.reset();
 });
 
 const categoryContainer = document.querySelector(".category-container");
 
-async function loadCategories() {
+export async function loadCategories() {
   const categories = await window.electronAPI.getCategory();
   const entries = await window.electronAPI.getSavings();
   categoryContainer.innerHTML = "";
@@ -88,8 +84,8 @@ function createCardCategory(entries, categoryName, category) {
 
     addCategorySelection("");
     console.log(buttonId);
-    await loadSavingsData(savingsPage);
-    await loadCategories();
+
+    await renderAll();
     console.log("deleted");
 
     /* loadSavingsData(page); */
@@ -124,14 +120,14 @@ SavingsForm.addEventListener("submit", async (e) => {
   };
   await window.electronAPI.addSavings(result);
   loadSavingsData(savingsPage);
-  loadCategories();
+  renderAll();
   totalExpense();
   SavingsForm.reset();
 });
 const totalValueSavingsMain = document.querySelector(".savings-value");
 const totalValueSavings = document.querySelector(".savings-total-value");
 /* MAIN FUNCTION */
-async function loadSavingsData(page) {
+export async function loadSavingsData(page) {
   const entries = await window.electronAPI.getSavings();
   const total = await SavingsTotal();
   totalValueSavings.innerText = "₱" + total;
@@ -262,7 +258,7 @@ function createSavingsActionButtons(rows, page) {
     const buttonId = col2.dataset.id;
     await window.electronAPI.deleteSavings(Number(buttonId));
     await totalExpense();
-    loadCategories();
+    renderAll();
     loadSavingsData(page);
   });
 

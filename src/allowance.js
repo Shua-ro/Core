@@ -1,7 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-  loadAllowanceData(allowancePage);
-  forAllowanceValue();
-});
+import { renderAll } from "./renderer";
+
 const allowanceForm = document.getElementById("allowance-form");
 allowanceForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -12,19 +10,19 @@ allowanceForm.addEventListener("submit", async (e) => {
   };
 
   await window.electronAPI.addAllowance(result);
-  loadAllowanceData(allowancePage);
+  renderAll(allowancePage);
   forAllowanceValue();
   allowanceForm.reset();
 });
 const totalValueAllowanceMain = document.querySelector(".allowance-main");
 const totalValueAllowance = document.querySelector(".allowance-expense-value");
 /* MAIN FUNCTION */
-async function loadAllowanceData(page) {
+export async function loadAllowanceData(page) {
   const entries = await window.electronAPI.getAllowance();
   const total = await allowanceTotal();
   totalValueAllowance.innerText = "₱" + total;
   totalValueAllowanceMain.innerText = "₱" + total;
-
+  forAllowanceValue();
   entryAppendingAllowance(entries, page);
   paginationControls(page, entries);
 }
@@ -187,15 +185,15 @@ function paginationControls(page, entries) {
   allowancePaginationInfo.innerText =
     "Showing page " + page + " of " + totalPages;
 }
-let allowancePage = 1;
+export let allowancePage = 1;
 const elecPrev = document.getElementById("allowance-prev");
 const elecNext = document.getElementById("allowance-next");
 
 elecPrev.addEventListener("click", () => {
   allowancePage--;
-  loadAllowanceData(allowancePage);
+  renderAll(allowancePage);
 });
 elecNext.addEventListener("click", () => {
   allowancePage++;
-  loadAllowanceData(allowancePage);
+  renderAll(allowancePage);
 });

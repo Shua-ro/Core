@@ -1,6 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-  loadElectricityData(electricityPage);
-});
+import { page, renderAll } from "./renderer";
 
 /* SAVE BUTTON LOGIC */
 const elecPaginationInfo = document.getElementById("elec-pagination-info");
@@ -14,7 +12,7 @@ electricityForm.addEventListener("submit", async (e) => {
     note: document.getElementById("electricity-note").value.trim(),
   };
   await window.electronAPI.addElectricity(result);
-  loadElectricityData(electricityPage);
+  renderAll();
   electricityForm.reset();
 });
 
@@ -25,7 +23,7 @@ const totalValueElectricity = document.querySelector(
 const totalValueElectricityMain = document.querySelector(".electricity-value");
 const rateChange = document.querySelector(".electricity-percentage");
 
-async function loadElectricityData(page) {
+export async function loadElectricityData(page) {
   const entries = await window.electronAPI.getElectricity();
   const total = await electricityTotal();
   totalValueElectricity.innerText = "₱" + total;
@@ -126,7 +124,7 @@ function createSavingsActionButtons(rows, page) {
   col2.addEventListener("click", async () => {
     const buttonId = col2.dataset.id;
     await window.electronAPI.deleteElectricity(Number(buttonId));
-    loadElectricityData(page);
+    renderAll();
   });
 
   row.appendChild(col1);
@@ -184,8 +182,6 @@ function changeRateColor(rate) {
     ".electricity-percentage",
   );
   const changeTitle = document.querySelector(".elec-change");
-
-  // reset everything first
   changeRate.classList.remove("positive", "negative");
   electricityPercentage.classList.remove("positive-text", "negative-text");
   changeTitle.classList.remove("positive-text", "negative-text");
@@ -195,7 +191,6 @@ function changeRateColor(rate) {
   changeTitle.style.color = "";
 
   if (rate > 0) {
-    // increase = bad (spending went up) = red
     changeRate.classList.add("negative");
     electricityPercentage.classList.add("negative-text");
     changeTitle.classList.add("negative-text");
@@ -213,13 +208,13 @@ function changeRateColor(rate) {
 
 const elecPrev = document.getElementById("elec-prev");
 const elecNext = document.getElementById("elec-next");
-let electricityPage = 1;
+export let electricityPage = 1;
 
 elecPrev.addEventListener("click", () => {
   electricityPage--;
-  loadElectricityData(electricityPage);
+  renderAll();
 });
 elecNext.addEventListener("click", () => {
   electricityPage++;
-  loadElectricityData(electricityPage);
+  renderAll();
 });
